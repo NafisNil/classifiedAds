@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SubRegionController;
+use App\Http\Controllers\CityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,4 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('region', RegionController::class);
     Route::resource('subregion', SubRegionController::class);
+    Route::resource('city', CityController::class);
 });

@@ -72,6 +72,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('city.index')}}" class="nav-link {{$route == 'city.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                City
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>
