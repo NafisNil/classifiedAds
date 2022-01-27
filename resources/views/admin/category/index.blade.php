@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sub Region List</h1>
+            <h1>Category List</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Sub Region List</li>
+              <li class="breadcrumb-item active">Category List</li>
             </ol>
           </div>
         </div>
@@ -24,9 +24,9 @@
           <!-- left column -->
              <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Sub Region</h3>
+                <h3 class="card-title">Category</h3>
                
-                <a href="{{route('subregion.create')}}" class="float-right btn btn-outline-dark btn-sm mb-2"><i class="fas fa-plus-square"></i></a>
+                <a href="{{route('category.create')}}" class="float-right btn btn-outline-dark btn-sm mb-2"><i class="fas fa-plus-square"></i></a>
                
                   
               </div>
@@ -38,25 +38,24 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Region</th>
+                   
                     <th>Action</th>
                    
                   </tr>
                   </thead>
                   <tbody>
                  
-                    @foreach ($subRegion as $key=>$item)
+                    @foreach ($category as $key=>$item)
                         
                    
                   <tr>
                     <td>{{++$key}}</td>
                     <td>{{$item->name}}</td>
-                    <td>{{$item->regionName->name}}</td>
                    
                     <td>
-                      <a href="{{route('subregion.edit',[$item->id])}}"><button class="btn btn-outline-info btn-sm"><i class="fas fa-pen-square"></i></button></a>
+                      <a href="{{route('category.edit',[$item])}}"><button class="btn btn-outline-info btn-sm"><i class="fas fa-pen-square"></i></button></a>
                     
-                      <form action="{{route('subregion.destroy',[$item->id])}}" method="POST">
+                    <form action="{{route('category.destroy',[$item])}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
@@ -73,14 +72,14 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Region</th>
+                   
                     <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>
 
                 <div class="d-flex justify-content-center">
-                {!! $subRegion->appends(Request::all())->links() !!}
+                {!! $category->appends(Request::all())->links() !!}
               </div>
               </div>
               <!-- /.card-body -->

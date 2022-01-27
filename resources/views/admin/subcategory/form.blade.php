@@ -28,21 +28,20 @@
                  
                 </div>
 
+
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Sub Region</label>
+                  <label for="exampleInputEmail1">Category</label>
                   
                 
-                  <select class="form-control" id="exampleFormControlSelect1" name="subregion">
-                    @foreach ($subregion as $item)
-                    <option value="{{$item->id}}"  {{$item->id ==@$edit->subregion?'selected':''}} >{{$item->name}}</option>
+                  <select class="form-control" id="exampleFormControlSelect1" name="category">
+                    @foreach ($category as $item)
+                    <option value="{{$item->id}}"  {{$item->id ==@$edit->category?'selected':''}} >{{$item->name}}</option>
                     @endforeach
                   
                   </select>
                  
                 </div>
 
-        
-                 
                 </div>
                 <!-- /.card-body -->
 

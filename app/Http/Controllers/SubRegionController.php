@@ -65,11 +65,14 @@ class SubRegionController extends Controller
      * @param  \App\Models\SubRegion  $subRegion
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubRegion $subRegion)
+    public function edit( $subRegion)
     {
         //
+        $subr = SubRegion::find($subRegion);
+        $region = Region::all();
         return view('admin.subregion.edit',[
-            'edit' => $subRegion
+            'edit' => $subr,
+            'region' => $region
         ]);
     }
 
@@ -80,10 +83,11 @@ class SubRegionController extends Controller
      * @param  \App\Models\SubRegion  $subRegion
      * @return \Illuminate\Http\Response
      */
-    public function update(SubRegionRequest $request, SubRegion $subRegion)
+    public function update(SubRegionRequest $request, $subRegion)
     {
         //
-        $subRegion->update($request->all());
+        $subR = SubRegion::find($subRegion);
+        $subR->update($request->all());
        
         return redirect()->route('subregion.index')->with('success','Data updated successfully');
     }
@@ -94,10 +98,11 @@ class SubRegionController extends Controller
      * @param  \App\Models\SubRegion  $subRegion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubRegion $subRegion)
+    public function destroy($subRegion)
     {
         //
-        $subRegion->delete();
+        $subR = SubRegion::find($subRegion);
+        $subR->delete();
         return redirect()->route('subregion.index')->with('status','Data deleted successfully!');
     }
 }

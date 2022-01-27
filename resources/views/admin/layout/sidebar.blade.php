@@ -81,6 +81,24 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('category.index')}}" class="nav-link {{$route == 'category.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Category
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('subcategory.index')}}" class="nav-link {{$route == 'subcategory.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Sub Category
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

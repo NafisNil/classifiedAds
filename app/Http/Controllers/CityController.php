@@ -67,8 +67,10 @@ class CityController extends Controller
     public function edit(City $city)
     {
         //
+        $subregion = SubRegion::all();
         return view('admin.city.edit',[
-            'edit' => $city
+            'edit' => $city,
+            'subregion' =>  $subregion
         ]);
     }
 
