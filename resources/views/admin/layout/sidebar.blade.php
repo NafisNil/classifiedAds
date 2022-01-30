@@ -99,6 +99,51 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('about.index')}}" class="nav-link {{$route == 'about.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                About Us
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('service.index')}}" class="nav-link {{$route == 'service.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Service
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('term.index')}}" class="nav-link {{$route == 'term.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Terms
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('contact.index')}}" class="nav-link {{$route == 'contact.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Contact
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('role.index')}}" class="nav-link {{$route == 'role.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Role
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

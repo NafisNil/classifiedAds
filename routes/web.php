@@ -6,6 +6,11 @@ use App\Http\Controllers\SubRegionController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TermController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,4 +35,9 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('city', CityController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
+    Route::resource('about', AboutusController::class);
+    Route::resource('service', ServiceController::class);
+    Route::resource('term', TermController::class);
+    Route::resource('contact', ContactController::class);
+    Route::resource('role', RoleController::class);
 });
