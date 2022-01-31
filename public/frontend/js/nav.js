@@ -1,0 +1,1 @@
+function openNav(){$(".sidenav").css("display","block"),$(".endpage").css("display","block"),$(".endpage").on("click",function(){closeNav()})}function closeNav(){$(".sidenav").css("display","none"),$(".endpage").css("display","none")}

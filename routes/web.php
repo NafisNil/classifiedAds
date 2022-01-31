@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +23,11 @@ use App\Http\Controllers\RoleController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-
+});*/
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/category_list', [FrontendController::class, 'category_list'])->name('category.list');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
