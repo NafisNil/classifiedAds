@@ -8,18 +8,22 @@
     <a href="https://www.backlist24.org/"> Home</a> &gt; Registration form
     </div>
     <div id="centralIndexModule">
+       
         <div class="mFormWrap mLoginForm">
+           
           <div id="loginForm">
+           
             <img alt="backlist24" title="backlist24" src="https://www.backlist24.org/assets/frontend/img/logo.png" />
             <div class="wrpper">
-              <div class="error"></div>
+              <div class="error">@include('admin.sessionFront') </div>
               <h1>Sign Up Form</h1>
               <div class="container">
-                <form id="signup" method="post">
+                <form id="signup" action="{{route('signup.store')}}" method="post">
+                    @csrf
                   <div class="input-name">
-                    <input name="fname" type="text" placeholder="First name" class="name" required value="">
+                    <input name="first_name" type="text" placeholder="First name" class="name" required value="">
                     <span>
-                      <input name="lname" type="text" placeholder="Last name " class="name" required value="">
+                      <input name="last_name" type="text" placeholder="Last name " class="name" required value="">
                     </span>
                   </div>
                   <div class="input-name">
@@ -32,10 +36,10 @@
                   </div>
                   <div class="input-name">
                     <i class="fa fa-lock lock"></i>
-                    <input name="confpassword" type="password" placeholder="Confirm password" required="" class="text-name" value="">
+                    <input name="confirmation_password" type="password" placeholder="Confirm password" required="" class="text-name" value="">
                   </div>
                   <div class="input-name">
-                    <a href="/login">
+                    <a href="{{route('user.login')}}">
                       <button type="button" class="postbtncls rbtn">Login</button>
                     </a>
                     <span class="btnspace">

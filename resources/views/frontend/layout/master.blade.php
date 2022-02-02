@@ -15,7 +15,8 @@
     <script src="{{asset('frontend')}}/js/jquery-3.3.1.min.js" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
     <script src="{{asset('frontend')}}/js/googletag.js" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat.css">
+
+     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/sidebara.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/sidebara2.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat2.css">

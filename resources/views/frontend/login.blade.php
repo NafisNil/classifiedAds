@@ -8,19 +8,22 @@
     <a href="https://www.backlist24.org/"> Home</a> &gt; Login / Sign up
     </div>
     <div id="centralIndexModule">
+       
     <div class="mFormWrap mLoginForm">
     <div id="loginForm">
+      
     <div class="signupbtn"> <a href="{{route('user.registration')}}" style="
         text-decoration: none;
     ">Sign Up</a></div>
     <img alt="backlist24" title="backlist24" src="https://www.backlist24.org/assets/frontend/img/logo.png" />
-    <form method="post" id="login" style="
+    <form method="post" action="{{route('login.store')}}" id="login" style="
         margin-left: 15%;
         margin-right: 15%;
             background-color: inherit;
     ">
+    @csrf
     <div class="">
-    <div class="error"> </div>
+    <div class="error">  @include('admin.sessionFront') </div>
     <h3 class="" style="padding: 5px;text-align: center;">Login With Password</h3>
     <div class="col-lg-12">
     <div class="row">

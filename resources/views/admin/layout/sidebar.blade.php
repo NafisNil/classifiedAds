@@ -48,12 +48,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Logout</p>
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
               </li>
+             
 
+           
             </ul>
           </li>
           <li class="nav-item">
