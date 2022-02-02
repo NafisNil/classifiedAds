@@ -27,5 +27,17 @@ class FrontendController extends Controller
         return view('frontend.layout.home',['category' => $category]);
     }
 
+    public function login()
+    {
+        # code...
+        return view('frontend.login');
+    }
+
+    public function registration()
+    {
+        # code...
+        return view('frontend.register');
+    }
+
 
 }

@@ -28,6 +28,8 @@ use App\Http\Controllers\FrontendController;
 });*/
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/category_list', [FrontendController::class, 'category_list'])->name('category.list');
+Route::get('/user-login', [FrontendController::class, 'login'])->name('user.login');
+Route::get('/user-registration', [FrontendController::class, 'registration'])->name('user.registration');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

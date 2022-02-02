@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/sidebara.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/sidebara2.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat2.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/login.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/loginmain.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143223964-1" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
     <script type="5cf69b7f358dec5e96f44dff-text/javascript">
         window.dataLayer = window.dataLayer || [];
@@ -76,6 +78,8 @@
     @include('frontend.layout.sidebar')
 
     <!-- sidebar -->
+    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/list_cat.css">
+    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/listcatpage.css">
     <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/list_cat.css">
     <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/listcatpage.css">
    @yield('content')

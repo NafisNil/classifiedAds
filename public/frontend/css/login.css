@@ -1,0 +1,88 @@
+.input-name {
+    width: 80%;
+    position: relative;
+    margin: 20px auto;
+}
+
+.name {
+    width: 36%!important;
+    font-size: 18px;
+    padding: 8px 0px 8px 40px!important;
+    display: inline-block;
+    position: relative;
+    text-transform: capitalize;
+    margin: auto!important;
+    min-width: auto!important;
+}
+
+.lock {
+    padding: 8px 11px;
+}
+
+.input-name span {
+    margin-left: 20px;
+}
+
+input.text-name {
+    min-width: auto!important;
+    width: 89%!important;
+    padding: 8px 0px 8px 40px!important;
+    margin: auto!important;
+}
+
+.input-name i {
+    position: absolute;
+    font-size: 20px;
+    border-right: 1px solid rgb(189, 165, 165);
+}
+
+.email {
+    padding: 8px;
+}
+
+#loginForm form {
+    background-color: inherit!important;
+}
+
+.rbtn {
+    background-color: white!important;
+    color: #f44336;
+    background-image: unset;
+}
+
+.rbtn:hover {
+    background-color: #f44336!important;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.signupbtn {
+    text-align: right;
+    padding-right: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btnspace {
+    margin-left: 52%!important;
+}
+
+@media only screen and (max-width: 600px) {
+    .name {
+        font-size: 13px!important;
+        padding: 8px 0px 8px 15px!important;
+    }
+    input.text-name {
+        width: 79%!important;
+    }
+    .btnspace {
+        margin-left: 20%!important;
+    }
+    .signupbtn {
+        position: absolute;
+        top: 10%;
+        left: 70%;
+        padding: unset;
+    }
+}

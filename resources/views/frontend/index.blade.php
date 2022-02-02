@@ -99,7 +99,7 @@
     <div id=mainWrapper>
       <p class=floatp>
         <span>
-          <a href="login" title="Login">Login / Signup</a>
+          <a href="{{route('user.login')}}" title="Login">Login / Signup</a>
         </span>
       </p>
       <div id=header>
