@@ -45,11 +45,17 @@ class UserController extends Controller
             # code...
             if ($validData->role == "user") {
                 # code...
-                return "user dashboard";
+                return redirect()->route('user.dashboard');
             }
            
         }
        
+    }
+
+    public function dashboard()
+    {
+        # code...
+        return view("frontend.dashboard");
     }
 
 

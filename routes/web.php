@@ -50,3 +50,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('contact', ContactController::class);
     Route::resource('role', RoleController::class);
 });
+
+Route::group(['middleware' => ['auth','user']], function () {
+    Route::get('/user_dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
+});
