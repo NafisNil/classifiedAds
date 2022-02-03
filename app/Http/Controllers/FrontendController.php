@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Models\SubRegion;
 use App\Models\City;
 use App\Models\Category;
+use App\Models\Role;
 class FrontendController extends Controller
 {
     //
@@ -39,5 +40,22 @@ class FrontendController extends Controller
         return view('frontend.register');
     }
 
-    
+    public function role()
+    {
+        # code...
+        $role = Role::first();
+        return view('frontend.role_user',['role' => $role]);
+    }
+
+    public function postad()
+    {
+        # code...
+        return view('frontend.post-ad');
+    }
+
+    public function choose()
+    {
+        # code...
+        return view('frontend.choose_location');
+    }
 }

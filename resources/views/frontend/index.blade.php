@@ -108,7 +108,12 @@
         </marquee>
         <div class=clrclass></div>
         <div id=postAnAd>
-          <a title="backlist24 post ad" href="https://www.backlist24.com/post-ad">post ad</a>
+          @if (Auth::check())
+          <a title="backlist24 post ad" href="{{route('post.ad')}}">post ad</a>
+          @else
+          <a title="backlist24 post ad" href="{{route('user.login')}}">post ad</a>
+          @endif
+          
         </div>
         <div>Choose a location:</div>
       </div>

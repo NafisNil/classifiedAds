@@ -34,6 +34,7 @@ Route::get('/user-login', [FrontendController::class, 'login'])->name('user.logi
 Route::post('/signup-store',[UserController::class, 'signup'])->name('signup.store');
 Route::post('/login-store',[UserController::class, 'login'])->name('login.store');
 Route::get('/user-registration', [FrontendController::class, 'registration'])->name('user.registration');
+
 Auth::routes();
 
 
@@ -53,4 +54,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 
 Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/user_dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/post-role', [FrontendController::class, 'role'])->name('post.role');
+    Route::get('/post-ad', [FrontendController::class, 'postad'])->name('post.ad');
+    Route::get('/choose-location', [FrontendController::class, 'choose'])->name('choose.location');
 });

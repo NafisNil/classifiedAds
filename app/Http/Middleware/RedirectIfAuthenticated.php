@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                     return redirect()->route('home');
                    
                 } elseif(Auth::user()->role == 'user') {
-                    return "user";
+                    return redirect()->route('user.dashboard');
                    //return "user";
                 }
             }

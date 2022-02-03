@@ -64,10 +64,19 @@
                 <img style="width: 158px; height: 40px; padding-top: 2px;" alt="backlist24" title="backlist24" class="logow" src="https://www.backlist24.com/assets/frontend/img/logobr.png">
             </a>
         </div>
+        @if (Auth::check())
         <div id="postAdButton" class="tlBlock">
-            <a title="post ad" class="postbtncls" href="https://www.backlist24.com/post-ad">
-                <i class="fa fa-paper-plane-o"></i> Post ad </a>
+           
+          <a title="backlist24 post ad" href="{{route('post.ad')}}">post ad <i class="fa fa-paper-plane-o"></i></a>
+       
         </div>
+        @else
+        <div id="postAdButton" class="tlBlock">
+         
+            <a title="backlist24 post ad" href="{{route('user.login')}}" class="postbtncls">post ad  <i class="fa fa-paper-plane-o"></i></a>
+  
+          </div>
+        @endif
         <div id="community" class="tlBlock">
             <span class="city" style="background: #ce4242;position: fixed;z-index: -1;">
           <h1> Backpage Auburn,jobs, sale, apartments, dating, backlist </h1>
@@ -89,19 +98,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     
     <script src="{{asset('frontend')}}/js/nav.js" type="text/javascript"></script>
-   
-    <script type="5cf69b7f358dec5e96f44dff-text/javascript">
-        $(document).ready(function() {
-            $("h3").click(function() {
-                if ($(window).width() < 600) {
-                    var t;
-                    t = $(this).parent().next("ul,.categoryul");
-                    t.slideToggle("fast");
-                    $(this).parent().children("ul:visible,.categoryul:visible").not(t).slideUp("fast");
-                }
-            });
-        });
-    </script>
     
     <script src="https://cdn.jsdelivr.net/npm/rocket-loader@2.4.0/build/js/loader.js" data-cf-settings="5cf69b7f358dec5e96f44dff-|49" defer=""></script>
 </body>

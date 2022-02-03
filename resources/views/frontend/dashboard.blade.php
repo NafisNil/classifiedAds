@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="col-12 p-5" role="alert">
-            <div class="col-12 p-5" style="border:1px solid #483483;background:#d3d3d3">We request you not upload any nude or vulgar images and vulgar language like-( bitch, college girl, sugar baby, Porn girl, Drugs, Alcohol Etc ) please ignore post in your account. We are looking forward to your cooperation to make backlist24 a safe and secure platform for everyone <a title="Post Roles policy" href="https://www.backlist24.com/post-roles-policy">Post Roles</a>
+            <div class="col-12 p-5" style="border:1px solid #483483;background:#d3d3d3">We request you not upload any nude or vulgar images and vulgar language like-( bitch, college girl, sugar baby, Porn girl, Drugs, Alcohol Etc ) please ignore post in your account. We are looking forward to your cooperation to make backlist24 a safe and secure platform for everyone <a title="Post Roles policy" href="{{route('post.role')}}">Post Roles</a>
               </a>
             </div>
           </div>
