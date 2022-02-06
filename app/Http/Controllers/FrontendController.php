@@ -56,6 +56,7 @@ class FrontendController extends Controller
     public function choose()
     {
         # code...
-        return view('frontend.choose_location');
+        $region = Region::all();
+        return view('frontend.choose_location',['region' => $region]);
     }
 }
