@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,15 @@ Route::get('/user-registration', [FrontendController::class, 'registration'])->n
 
 Auth::routes();
 
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')->user();
+
+    // $user->token
+});
 
 Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -52,9 +62,15 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('role', RoleController::class);
 });
 
+
+
 Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/user_dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/post-role', [FrontendController::class, 'role'])->name('post.role');
     Route::get('/post-ad', [FrontendController::class, 'postad'])->name('post.ad');
     Route::get('/choose-location', [FrontendController::class, 'choose'])->name('choose.location');
+    Route::get('/choose-category/{id}', [FrontendController::class, 'category'])->name('choose.category');
+    Route::get('/choose-subcategory/{id}', [FrontendController::class, 'subcategory'])->name('choose.subcategory');
+    Route::get('/user-adform/{id}', [FrontendController::class, 'adform'])->name('user.adform');
+    Route::post('/post-adform', [FrontendController::class, 'adstore'])->name('adstore');
 });

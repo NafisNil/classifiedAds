@@ -131,7 +131,7 @@
             }
           </style>
           <div class="userinfo">
-            <div class="balance-blue">Balance : $ 0.00 </div>
+            <div class="balance-blue">Balance : $ {{Auth::user()->balance}} </div>
             <span id="group" class="hidemeonmobile">
               <style>
                 .count {

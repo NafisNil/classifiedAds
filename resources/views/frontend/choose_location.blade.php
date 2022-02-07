@@ -132,39 +132,22 @@
           <a onclick="showcities(&quot;10&quot;);">{{$item->name}}</a>
         </div>
              
-        @endforeach
+
+       @php
+           $city = App\Models\City::where('subregion',$item->id)->get();
+       @endphp
         <div class="stateContainer statecont10 hideme">
           <ul class="cityofstate">
+            @foreach ($city as $item)
+          
             <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=auburn">Auburn</a>
+              <a href="{{route('choose.category',$item->id)}}">{{$item->name}}</a>
             </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=birminghama">Birmingham</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=dothan">Dothan</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=gadsden">Gadsden</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=huntsvillee">Huntsville</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=mobile">Mobile</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=montgomery">Montgomery</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=muscle-shoals">Muscle Shoals</a>
-            </li>
-            <li>
-              <a href="https://www.backlist24.org/free-ad-choose-section?country=united-states&state=alabama&cities=tuscaloosa">Tuscaloosa</a>
-            </li>
+                  
+            @endforeach
           </ul>
         </div>
-
+        @endforeach
         <div class="homeclearecls"></div>
       </div>
            

@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat2.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/login.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/loginmain.css">
+    <script src="https://cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143223964-1" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
     <script type="5cf69b7f358dec5e96f44dff-text/javascript">
         window.dataLayer = window.dataLayer || [];

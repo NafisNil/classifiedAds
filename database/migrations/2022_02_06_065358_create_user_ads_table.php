@@ -15,6 +15,7 @@ class CreateUserAdsTable extends Migration
     {
         Schema::create('user_ads', function (Blueprint $table) {
             $table->id();
+            
             $table->timestamps();
         });
     }

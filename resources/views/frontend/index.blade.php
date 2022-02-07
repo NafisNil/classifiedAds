@@ -99,7 +99,18 @@
     <div id=mainWrapper>
       <p class=floatp>
         <span>
-          <a href="{{route('user.login')}}" title="Login">Login / Signup</a>
+          @if (Auth::check())
+          <a title="my account" href="{{route('user.dashboard')}}">My Account</a>
+          <a title="my account" href="{{route('logout')}}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">Logout</a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+          @else
+         
+          <a title="Login" href="{{route('user.login')}}">Login / Signup</a>
+          @endif
+          
         </span>
       </p>
       <div id=header>
