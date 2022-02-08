@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleController;
 use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
@@ -38,15 +39,8 @@ Route::get('/user-registration', [FrontendController::class, 'registration'])->n
 
 Auth::routes();
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
-
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
-
-    // $user->token
-});
+Route::get('auth/google', [GoogleController::class,'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class,'handleCallback']);
 
 Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

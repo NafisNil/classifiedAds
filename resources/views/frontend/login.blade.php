@@ -47,7 +47,7 @@
     </div>
     </div>
     </div><h2>Or</h2>
-    <a class="login" href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=https%3A%2F%2Fwww.backlist24.org%2Fauth%2Foauth2callback&client_id=342367215811-92sdcsiuu0dkqp882l0avf7q01ufj5kg.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=online&approval_prompt=auto"><img style="height: 45px!important;" alt="gmail login" title="gmail login" src="https://www.backlist24.org/assets/frontend/img/gmaillogin.png" /></a></form>
+    <a class="login" href="{{url('auth/google')}}"><img style="height: 45px!important;" alt="gmail login" title="gmail login" src="https://www.backlist24.org/assets/frontend/img/gmaillogin.png" /></a></form>
     <br /><br />
     </div>
     </div>
