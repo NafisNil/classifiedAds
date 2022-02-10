@@ -36,7 +36,9 @@ Route::get('/user-login', [FrontendController::class, 'login'])->name('user.logi
 Route::post('/signup-store',[UserController::class, 'signup'])->name('signup.store');
 Route::post('/login-store',[UserController::class, 'login'])->name('login.store');
 Route::get('/user-registration', [FrontendController::class, 'registration'])->name('user.registration');
-
+Route::get('/terms-condition', [FrontendController::class, 'terms'])->name('terms.condition');
+Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy.policy');
+Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Auth::routes();
 
 Route::get('auth/google', [GoogleController::class,'redirectToGoogle']);

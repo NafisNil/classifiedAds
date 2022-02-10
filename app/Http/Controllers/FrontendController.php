@@ -9,6 +9,9 @@ use App\Models\City;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Role;
+use App\Models\Term;
+use App\Models\Privacy;
+use App\Models\Aboutus;
 use Session;
 class FrontendController extends Controller
 {
@@ -86,7 +89,10 @@ class FrontendController extends Controller
         # code...
         $city =Session::get('city');
         $subcategory = $id;
-        return view('frontend.user_adform',['city' => $city, 'subcategory'=>$subcategory]);
+        $cityDetails = City::find($city);
+        $nearby = City::where('subregion', $cityDetails->subregion)->get();
+        
+        return view('frontend.user_adform',['city' => $city, 'subcategory'=>$subcategory, 'cityDetails' => $cityDetails, 'nearby' => $nearby]);
     }
 
     public function adstore(Request $request)
@@ -94,5 +100,30 @@ class FrontendController extends Controller
         # code...
 
         dd($request->all());
+    }
+
+    public function terms()
+    {
+        # code...
+        $terms = Term::first();
+        
+        return view('frontend.terms', ['terms' => $terms]);
+    }
+
+
+    public function privacy()
+    {
+        # code...
+        $privacy = Privacy::first();
+        dd($privacy);
+        return view('frontend.terms',  ['privacy' => $privacy]);
+    }
+
+    public function aboutUs()
+    {
+        # code...
+        $about = Aboutus::first();
+        
+        return view('frontend.aboutus', ['about' => $about]);
     }
 }

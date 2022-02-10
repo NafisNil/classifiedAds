@@ -464,34 +464,20 @@
           <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25">$0.25</span>
           </span>
           <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(446)" id="NearByCities446" value="446" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Calgary - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" checked disabled id="NearByCities447" value="447" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25">
-          <label for="NearByCities">Edmonton - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(448)" id="NearByCities448" value="448" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Ft Mcmurray - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(449)" id="NearByCities449" value="449" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Grande Prairie - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(450)" id="NearByCities450" value="450" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Lethbridge - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(451)" id="NearByCities451" value="451" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Medicine Hat - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(452)" id="NearByCities452" value="452" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">Red Deer - $0.25</label>
-          <br>
-          <input type="checkbox" name="citys" onclick="if (!window.__cfRLUnblockHandlers) return false; nearbycities(453)" id="NearByCities453" value="453" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" data-cf-modified-68e6ab010021748e0a9b3282-="">
-          <label for="NearByCities">St. Albert - $0.25</label>
+          @foreach ($nearby as $item)
+            <input type="checkbox" name="citys" onclick="nearbycities(446)" id="NearByCities446" value="{{$item->id}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" @if ($item->id == $cityDetails->id)
+              checked
+            @endif>
+            <label for="NearByCities">{{$item->name}} - $0.25</label>
+            <br>
+          @endforeach
+         
+         
           <br>
           <br>
           <input type="checkbox" name="accept_terms" id="acceptTermsBox" style="float:left;" value="true">
           <div style="margin-left:30px;">
-            <span id="fairHousing">By placing this ad I agree to the <a href="https://www.backlist24.com/terms-of_use" target="_blank">terms of use</a> and <a href="https://www.backlist24.com/privacy-policy" target="_blank">privacy policy</a>. </span>
+            <span id="fairHousing">By placing this ad I agree to the <a href="{{route('terms.condition')}}" target="_blank">terms of use</a> and <a href="{{route('privacy.policy')}}" target="_blank">privacy policy</a>. </span>
           </div>
           <br>
           <button class="button" id="submit_button" style="margin-bottom:1em;" onclick="submitted()" data-cf-modified="">Continue</button>

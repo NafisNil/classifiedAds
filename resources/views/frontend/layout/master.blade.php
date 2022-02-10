@@ -89,10 +89,9 @@
     @include('frontend.layout.sidebar')
 
     <!-- sidebar -->
-    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/list_cat.css">
-    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/listcatpage.css">
-    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/list_cat.css">
-    <link rel="stylesheet" type="text/css" href="https://www.backlist24.com/assets/frontend/css/listcatpage.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/list_cat.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/listcatpage.css">
+
    @yield('content')
    @include('frontend.layout.footer')
     <div class="endpage"></div>
