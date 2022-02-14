@@ -12,8 +12,8 @@
     <link rel="shortcut icon" href="https://www.backlist24.com/assets/frontend/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="{{asset('frontend')}}/js/jquery-3.3.1.min.js" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
-    <script src="{{asset('frontend')}}/js/googletag.js" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
+    <script src="{{asset('frontend')}}/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="{{asset('frontend')}}/js/googletag.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
      <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat.css">
@@ -22,9 +22,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/cat2.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/login.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/loginmain.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/addCreditpage.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/managead.css">
     <script src="https://cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143223964-1" type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
-    <script type="5cf69b7f358dec5e96f44dff-text/javascript">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143223964-1" type="text/javascript"></script>
+    <script type="text/javascript">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -33,7 +35,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-143223964-1');
     </script>
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5b2246601cc34b76b5e4ae67c733b37a"}' type="5cf69b7f358dec5e96f44dff-text/javascript"></script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5b2246601cc34b76b5e4ae67c733b37a"}' type="text/javascript"></script>
     <style>
         @media (max-width: 860px) {
             .city {

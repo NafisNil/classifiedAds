@@ -14,7 +14,7 @@
     <a alt="Buy Credit" title="Buy Credit" href="https://www.backlist24.com/add-credit">Buy Credit</a>
   </li>
   <li>
-    <a alt="Contact" title="Contact" href="https://www.backlist24.com/contact">Contact</a>
+    <a alt="Contact" title="Contact" href="{{route('contact.us')}}">Contact</a>
   </li>
   <li>
     <a alt="Privacy" title="Privacy" href="https://www.backlist24.com/privacy-policy">Privacy</a>

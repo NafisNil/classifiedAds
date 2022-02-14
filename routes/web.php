@@ -39,6 +39,8 @@ Route::get('/user-registration', [FrontendController::class, 'registration'])->n
 Route::get('/terms-condition', [FrontendController::class, 'terms'])->name('terms.condition');
 Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy.policy');
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
+Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
+Route::get('/add-credit', [FrontendController::class, 'addCredit'])->name('add.credit');
 Auth::routes();
 
 Route::get('auth/google', [GoogleController::class,'redirectToGoogle']);

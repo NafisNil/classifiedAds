@@ -341,6 +341,12 @@
   </style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <div class="mainBody">
+    @php
+      $ad_price = .01;
+      $sponsor = 2;
+      $premium = 4
+    @endphp
+
     <div style="max-height: 99999px;">
       <form name="f" id="submit-all" method="post" action="{{route('adstore')}}" enctype="multipart/form-data">
         @csrf
@@ -429,19 +435,19 @@
           </div>
         </div>
         <br clear="both">
-        <h3 class="recUpgrades">Premium ads future <span class="editAdText"></span>
+        <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
         </h3>
         <span class="editAdTitles">
-          <b>Premium Ads</b>
+          <b>Verified Ads</b>
           <br>
           <p>
-            <input type="checkbox" name="premium" id="premium" value="1"> Make this ad Premium for ( Premium ad will be shown on top of all Ads. ) $ <span id="premiumadval" data-near="5">5</span>
+            <input type="checkbox" name="premium" id="premium" value="1"> Make this ad Verified for ( Verified ad will be shown on top of all Ads. ) $ <span id="premiumadval" data-near="5">{{$premium}}</span>
           </p>
         </span>
         <span class="editAdTitles">
           <b>Sponsor Ad</b>
         </span>
-        <big> $ <span id="sponsoradval" data-near="2">2</span>
+        <big> $ <span id="sponsoradval" data-near="2">{{$sponsor}}</span>
         </big>
         <div id="purchaseSponsorAd" style="margin-bottom:1em;">
           <dl id="purchSponsorAd" class="clearfix" style="position:relative;margin-bottom:1em;">
@@ -451,7 +457,7 @@
             <dd style="line-height:1.5;margin-left:30px;">
               <div class="editAdText"> Your ad will appear highlighted (Top and Bottom). </div>
               <div class="editAdText" id="weeksNumber" style="margin:1em 0;"> Number of weeks: <select name="sponsor_weeks">
-                  <option value="1">1 week ($2)</option>
+                  <option value="1">1 week (${{$sponsor}})</option>
                 </select>
               </div>
             </dd>
@@ -461,14 +467,14 @@
         <br>
         <span class="editAdTitles">
           <b>Add Nearby Cities</b>
-          <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25">$0.25</span>
+          <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25">{{$ad_price}}</span>
           </span>
           <br>
           @foreach ($nearby as $item)
             <input type="checkbox" name="citys" onclick="nearbycities(446)" id="NearByCities446" value="{{$item->id}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" @if ($item->id == $cityDetails->id)
               checked
             @endif>
-            <label for="NearByCities">{{$item->name}} - $0.25</label>
+            <label for="NearByCities">{{$item->name}} - {{$ad_price}}</label>
             <br>
           @endforeach
          
@@ -504,7 +510,7 @@
     <div style="clear:both;"></div>
   </div>
   <input type="hidden" id="countimg" value='0'>
-  <script type="68e6ab010021748e0a9b3282-text/javascript">
+  <script type="text/javascript">
     var usertimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     $('#usertimezone').val(usertimezone);
     console.log();

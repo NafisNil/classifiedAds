@@ -12,6 +12,7 @@ use App\Models\Role;
 use App\Models\Term;
 use App\Models\Privacy;
 use App\Models\Aboutus;
+use App\Models\Contact;
 use Session;
 class FrontendController extends Controller
 {
@@ -125,5 +126,18 @@ class FrontendController extends Controller
         $about = Aboutus::first();
         
         return view('frontend.aboutus', ['about' => $about]);
+    }
+
+    public function contact()
+    {
+        # code...
+        $contact = Contact::first();
+        return view('frontend.contact', ['contact' => $contact]);
+    }
+
+    public function addCredit()
+    {
+        # code...
+        return view('frontend.add_credit');
     }
 }

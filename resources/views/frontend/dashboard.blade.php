@@ -177,7 +177,7 @@
               </div>
               <ul class="nav navbar-nav">
                 <li>
-                  <a href="https://www.backlist24.org/add-credit">Buy Credits</a>
+                  <a href="{{route('add.credit')}}">Buy Credits</a>
                 </li>
                 <li>
                   <a style="color:#d3d3d3 !important;" href="#">Manage Ads</a>
@@ -187,7 +187,7 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <a type="button" class="navbar-btn btn btn-gradient-red" am-latosans="bold" href="https://www.backlist24.org/add-credit">Buy Credits</a>
+                <a type="button" class="navbar-btn btn btn-gradient-red" am-latosans="bold" href="{{route('add.credit')}}">Buy Credits</a>
               </ul>
             </div>
           </nav>
