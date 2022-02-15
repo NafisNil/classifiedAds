@@ -40,7 +40,7 @@
     </div>
     </div>
     <div class="input-name">
-    <a href="/forget-password"><button type="button" class="postbtncls rbtn">Reset</button></a>
+    <a href="{{route('password.reset.form')}}"><button type="button" class="postbtncls rbtn">Reset</button></a>
     <span class="btnspace"><button type="submit" class="postbtncls rbtn">Login</button></span>
     </div>
     </div>

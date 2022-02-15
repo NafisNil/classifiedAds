@@ -140,4 +140,10 @@ class FrontendController extends Controller
         # code...
         return view('frontend.add_credit');
     }
+
+    public function passwordReset()
+    {
+        # code...
+        return view('frontend.reset');
+    }
 }

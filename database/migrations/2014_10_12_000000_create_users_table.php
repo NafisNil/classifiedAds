@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->double('balance')->default(0.00);
-            $table->string('role')->default('admin');
-            $table->string('google_id');
+            $table->string('role')->default('user');
+            $table->string('google_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

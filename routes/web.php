@@ -41,6 +41,7 @@ Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('pri
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
 Route::get('/add-credit', [FrontendController::class, 'addCredit'])->name('add.credit');
+Route::get('/password-reset-form', [FrontendController::class, 'passwordReset'])->name('password.reset.form');
 Auth::routes();
 
 Route::get('auth/google', [GoogleController::class,'redirectToGoogle']);
