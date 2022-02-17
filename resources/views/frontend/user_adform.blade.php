@@ -342,9 +342,20 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <div class="mainBody">
     @php
-      $ad_price = .01;
+    $ad_Category = session()->get('ad_Category');
+      session()->put('ad_Category', $ad_Category);
+      if($ad_Category == 1){
+        $ad_price = 0;
+      $sponsor = 0;
+      $premium = 0;
+      $cost = $ad_price + $sponsor + $premium;
+      }else{
+        $ad_price = .01;
       $sponsor = 2;
-      $premium = 4
+      $premium = 4;
+      $cost = $ad_price + $sponsor + $premium;
+      }
+      
     @endphp
 
     <div style="max-height: 99999px;">
@@ -355,6 +366,7 @@
         <input type="hidden" name="sub_category_id" value="272">
         <input type="hidden" name="country_id" value="6">
         <input type="hidden" name="state_id" value="61">
+        <input type="hidden" value="{{$cost}}" name="cost">
         <h2>Step 1: Write Ad&nbsp; <span class="req" style="font-size:14px;font-weight:normal;">&nbsp;required fields&nbsp;</span>
         </h2>
         <ul id="stepButtons">
@@ -502,7 +514,7 @@
           <span id="ageError1" style="display:none;color:red">Error: Please fill Age.</span>
           <span id="agevalid" style="display:none;color:red">Error: Please Provide Age Between 18 to 80 years.</span>
           <input type="hidden" name="usertimezone" id="usertimezone" value="" />
-          <input type="hidden" name="tcityprice" id="tcityprice" value="0.25" />
+          <input type="hidden" name="tcityprice" id="tcityprice" value="{{$ad_price}}" />
           <input type="hidden" name="mtprice" id="mtprice" value="0" />
         </span>
       </form>
@@ -510,382 +522,7 @@
     <div style="clear:both;"></div>
   </div>
   <input type="hidden" id="countimg" value='0'>
-  <script type="text/javascript">
-    var usertimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    $('#usertimezone').val(usertimezone);
-    console.log();
 
-    function submitted() {
-      var cityprice = $('#tcityprice').val();
-      var addonprice = $('#mtprice').val();
-      var title = $('#name').val();
-      var location = $('#pac-input').val();
-      var age = $('#age').val();
-      var totalprice = parseFloat(cityprice) + parseFloat(addonprice);
-      var description = $("#desc").val();
-      var loc = $("#loc").val();
-     
-      if ($("#checkerror").is(":visible")) {
-        $("#name").focus();
-        return false;
-      }
-      if ($("#checkerror2").is(":visible")) {
-        $(".nicEdit-main").focus();
-        return false;
-      }
-      if (loc == "") {
-        $("#locationError1").show();
-        return false;
-      }
-      if (title == "") {
-        $("#titleError1").show();
-        return false;
-      }
-      if (description == '') {
-        $("#description").focus();
-        return false;
-      } else {
-        $("#description").html('');
-        var ht = $(".nicEdit-main").html();
-        $("#description").html(ht);
-      }
-      if (locationadd == '') {
-        $("#locationError1").show();
-        $("#pac-input").focus();
-        return false;
-      }
-      if (location == "") {
-        $("#locationError1").show();
-        $("#pac-input").focus();
-        return false;
-      }
-      if (age == "") {
-        $("#titleError1").hide();
-        $("#ageError1").show();
-        return false;
-      }
-      if (age < 18 || age > 80) {
-        $("#titleError1").hide();
-        $("#ageError1").hide();
-        $("#agevalid").show();
-        return false;
-      }
-      if (!$("#premium").is(":checked") && !$("#sponsorAd").is(":checked") && totalprice < 0) {
-        if (totalprice < 0) {
-          $("#agevalid").hide();
-          $("#titleError1").hide();
-          $("#ageError1").hide();
-          $("#termsError1").show();
-          return false;
-        } else {
-          $("#termsError1").hide();
-          return false;
-        }
-      }
-      if (!$("#acceptTermsBox").is(":checked")) {
-        $("#termsError").show();
-        $("#termsError1").hide();
-        return false;
-      } else {
-        $("#locationError1").hide();
-        $("#titleError1").hide();
-        $("#ageError1").hide();
-        $("#termsError").hide();
-        $("#termsError1").hide();
-        $("#description").html('');
-        var ht = $(".nicEdit-main").html();
-        $("#description").html(ht);
-        var htmltag = $("#description").text();
-        if (htmltag != '') {
-          if (openatag != '-1' || atag != '-1' || hreftag != '-1' || comtag != '-1' || intag != '-1' || intag2 != '-1' || intag3 != '-1' || intag4 != '-1' || intag5 != '-1' || httptag != '-1' || httpstag != '-1' || wwwtag != '-1') {
-            $("#errorurl").show();
-            return false;
-          } else {
-            $("#errorurl").hide();
-            $('#editoption').val('');
-            $('#editoption').val(0);
-            $("#termsError").hide();
-            $("#termsError1").hide();
-            return true;
-          }
-        } else {
-          $("#description").focus();
-          return false;
-        }
-      }
-      return false;
-    }
-
-    function mtt() {
-      if ($('#moveAdToTopMulti').is(':checked')) {
-        var moveToTopTotal = $("#moveToTopTotal").attr('data-total');
-        var totalpricecity = parseFloat(moveToTopTotal);
-        $("#mtprice").val('');
-        $("#mtprice").val(totalpricecity.toFixed(2));
-      } else {
-        $("#mtprice").val('');
-        $("#mtprice").val('0');
-      }
-    }
-
-    function nearbycities(city_id) {
-      if ($('#NearByCities' + city_id).is(':checked')) {
-        var moveToTopTotal = $("#moveToTopTotal").attr('data-total');
-        // alert(moveToTopTotal);
-        var add = parseFloat(moveToTopTotal) + parseFloat(0.25);
-        var neartotal = $("#nearbyTotalPrice").attr('data-near');
-        var total = parseFloat(neartotal) + parseFloat(0.25);
-        $("#nearbyTotalPrice").html('');
-        $("#nearbyTotalPrice").attr('data-near', total.toFixed(2));
-        $("#nearbyTotalPrice").html('$' + total.toFixed(2));
-        var bumpnewamount = $("#bumptotopamountsecret").val();
-        var total_city_price = parseFloat(total) / parseFloat(0.25);
-        var total_city = total_city_price * bumpnewamount;
-        $("#bumptotopamount").html(total_city);
-        $("#bumptotopamounthidden").val(total_city);
-        var premiumtotal = $("#premiumadval").attr('data-near');
-        var premiumprice = parseInt(premiumtotal) + parseInt(5);
-        $("#premiumadval").html();
-        $("#premiumadval").attr('data-near', premiumprice.toFixed(2));
-        $("#premiumadval").html(premiumprice);
-        $("#premiumadval1").val(premiumprice);
-        var sponsortotal = $("#sponsoradval").attr('data-near');
-        var sponsorprice = parseInt(sponsortotal) + parseInt(2);
-        $("#sponsoradval").html();
-        $("#sponsoradval").attr('data-near', sponsorprice.toFixed(2));
-        $("#sponsoradval").html(sponsorprice);
-        $("#sponsoradval").val(sponsorprice);
-        $("#moveToTopTotal").html('');
-        $("#moveToTopTotal").attr('data-total', add + '.00');
-        $("#moveToTopTotal").html('$' + add + '.00');
-        var totalpricecity = parseFloat(total);
-        $("#tcityprice").val('');
-        $("#tcityprice").val(totalpricecity.toFixed(2));
-        if ($('#moveAdToTopMulti').is(':checked')) {
-          var moveAdToTop = $("#moveToTopTotal").attr('data-total');
-          var add = parseFloat(moveAdToTop)
-          $("#mtprice").val('');
-          $("#mtprice").val(add.toFixed(2));
-        }
-      } else {
-        var moveToTopTotal = $("#moveToTopTotal").attr('data-total');
-        // alert(moveToTopTotal);
-        var add = parseFloat(moveToTopTotal) - parseFloat(0.25);
-        var neartotal = $("#nearbyTotalPrice").attr('data-near');
-        var total = parseFloat(neartotal) - parseFloat(0.25);
-        $("#nearbyTotalPrice").html('');
-        $("#nearbyTotalPrice").attr('data-near', total.toFixed(2));
-        $("#nearbyTotalPrice").html('$' + total.toFixed(2));
-        var bumpnewamount = $("#bumptotopamountsecret").val();
-        var total_city_price = parseFloat(total) / parseFloat(0.25);
-        var total_city = total_city_price * bumpnewamount;
-        $("#bumptotopamount").html(total_city);
-        $("#bumptotopamounthidden").val(total_city);
-        var premiumtotal = $("#premiumadval").attr('data-near');
-        var premiumprice = parseInt(premiumtotal) - parseInt(5);
-        $("#premiumadval").html();
-        $("#premiumadval").attr('data-near', premiumprice.toFixed(2));
-        $("#premiumadval").html(premiumprice);
-        $("#premiumadval1").val(premiumprice);
-        $("#moveToTopTotal").html('');
-        $("#moveToTopTotal").attr('data-total', add + '.00');
-        $("#moveToTopTotal").html('$' + add + '.00');
-        var sponsortotal = $("#sponsoradval").attr('data-near');
-        var sponsorprice = parseInt(sponsortotal) - parseInt(2);
-        $("#sponsoradval").html();
-        $("#sponsoradval").attr('data-near', sponsorprice.toFixed(2));
-        $("#sponsoradval").html(sponsorprice);
-        $("#sponsoradval").val(sponsorprice);
-        var totalpricecity = parseFloat(total);
-        $("#tcityprice").val('');
-        $("#tcityprice").val(totalpricecity.toFixed(2));
-        if ($('#moveAdToTopMulti').is(':checked')) {
-          var moveAdToTop = $("#moveToTopTotal").attr('data-total');
-          var add = parseFloat(moveAdToTop)
-          $("#mtprice").val('');
-          $("#mtprice").val(add.toFixed(2));
-        }
-      }
-    }
-  </script>
-  <script type="68e6ab010021748e0a9b3282-text/javascript">
-    var lc = 0;
-    $(document).ready(function() {
-      $.cloudinary.config({
-        cloud_name: 'dlo6mdp0c',
-        secure: true
-      });
-      if (lc < 5) {
-        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-      } else {
-        alert("Maximum 4 images allow only");
-        //$("#submitProcessing").hide();
-        return;
-      }
-      $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
-        var image = data.result;
-        var html = " < div class = 'img-inner' > < img src = \"" + image.secure_url + "\" data-file='" + image.original_filename + "' class='selFile' title='Click to remove'> < span data - remove = '" + image.resource_type + "/" + image.type + "/v" + image.version + "/" + image.public_id + "." + image.format + "#" + image.signature + "'
-        data - attr = '" + image.delete_token + "'
-        class = 'fa fa-close delete-img' > < /span> < /div>";
-        $("#selectedFiles").append(html);
-        lc++;
-        return true;
-      });
-    });
-  </script>
-  <script type="68e6ab010021748e0a9b3282-text/javascript">
-    $(function() {
-      var base_url = "https://www.backlist24.com/";
-      var storedFiles = [];
-      $("#product-photo-add").on("change", handleFileSelect);
-      $("body").on("click", ".delete-img", removeFile);
-      var storedFiles = [];
-
-      function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function(f) {
-          if (!f.type.match("image.*")) {
-            return;
-          }
-          storedFiles.push(f);
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            var html = " < div class = 'img-inner' > < img src = \"" + e.target.result + "\" data-file='" + f.name + "' class='selFile' title='Click to remove'> < span data - attr = '" + f.name + "'
-            class = 'fa fa-close delete-img' > < /span> < /div>";
-            $("#selectedFiles").append(html);
-          }
-          reader.readAsDataURL(f);
-        });
-      }
-
-      function removeFile(e) {
-        var file = $(this).attr("data-attr");
-        var el = "input[value='" + $(this).attr("data-remove") + "']";
-        $(el).remove();
-        $.cloudinary.delete_by_token(file);
-        lc--;
-        for (var i = 0; i < storedFiles.length; i++) {
-          if (storedFiles[i].name === file) {
-            storedFiles.splice(i, 1);
-            var val = $('#removed_files').val();
-            if (val === "") {
-              $('#removed_files').val(file);
-            } else {
-              file = val + '|' + file;
-              $('#removed_files').val(file);
-            }
-            break;
-          }
-        }
-        $(this).parent().remove();
-      }
-      $("#submit-all").closest("form").submit(function(event) {
-        event.preventDefault();
-        $("#submitProcessing").show();
-        var formData = new FormData();
-        // Initializing city_id array with Checkbox checked values
-        var city_id = [];
-        $("input[name='citys']:checked").each(function() {
-          city_id.push(this.value);
-        });
-        formData.append('city_id', city_id);
-        $("form").find("input, textarea, select").each(function() {
-          if ($(this).attr("name") !== 'files[]') {
-            formData.append($(this).attr("name"), $(this).val());
-          }
-        });
-        $("input[name='premium']:checked").each(function() {
-          formData.append('has_premium', "1");
-        });
-        $("input[name='sponsor']:checked").each(function() {
-          formData.append('has_sponsor', "1");
-        });
-        $.each(storedFiles, function(j, file) {
-          formData.append('images[' + j + ']', file);
-        })
-        if (lc > 4) {
-          alert("Maximum 4 images allow only");
-          $("#submitProcessing").hide();
-          return;
-        } else {
-          Swal.fire({
-            title: 'Your Post is Proccessing!',
-            html: 'Please  < b > Wait < /b> Until Your Post is Done.',
-            timerProgressBar: true,
-            onBeforeOpen: () => {
-              Swal.showLoading()
-            },
-          }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.esc) {
-              // console.log('I was closed by the timer') 
-            }
-          })
-          $.ajax({
-            url: base_url + 'user/postAdSave',
-            data: formData,
-            type: 'POST',
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-              if (data == "Error Code 503") {
-                $("#submitProcessing").hide();
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Duplicate Post Not Allowed!',
-                  footer: 'Must be Use Unique Tittle'
-                })
-                return;
-              } else if (data == "Error Code 505") {
-                $("#submitProcessing").hide();
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Implimeting Html Code is Prophicated ',
-                  footer: 'Post Not Allowed! With Html Code injection!'
-                })
-                return;
-              } else {
-                $("#submitProcessing").hide();
-                window.location.href = base_url + "preview-ad/" + data;
-              }
-            }
-          });
-        }
-      });
-    });
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      let oldname = "";
-      $("#name").blur(function() {
-        var text = $("#name").val();
-        if (text !== oldname) {
-          $.post("check", {
-            suggest: text
-          }, function(result) {
-            response = JSON.parse(result);
-            let message = "Error: Please Remove The Word ";
-            if (response.length > 0) {
-              for (i = 0; i < response.length; i++) {
-                message += response[i] + ",";
-              }
-              message += " From Title!";
-              $("#checkerror").text(message);
-              $("#checkerror").show();
-              $("#name").focus();
-            } else {
-              $("#checkerror").hide();
-              $("#checkerror").text("");
-            }
-          });
-          oldname = text;
-        }
-      });
-    });
-  </script>
   <script>
                         CKEDITOR.replace( 'description' );
                 </script>

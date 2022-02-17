@@ -13,6 +13,7 @@ use App\Models\Term;
 use App\Models\Privacy;
 use App\Models\Aboutus;
 use App\Models\Contact;
+use App\Models\Advertise;
 use Session;
 class FrontendController extends Controller
 {
@@ -59,11 +60,12 @@ class FrontendController extends Controller
         return view('frontend.post-ad');
     }
 
-    public function choose()
+    public function choose($id)
     {
         # code...
+      $ad_Category = $id;
         $region = Region::all();
-        return view('frontend.choose_location',['region' => $region]);
+        return view('frontend.choose_location',['region' => $region, 'ad_Category' => $ad_Category]);
     }
 
     public function category($id)
@@ -95,14 +97,26 @@ class FrontendController extends Controller
         
         return view('frontend.user_adform',['city' => $city, 'subcategory'=>$subcategory, 'cityDetails' => $cityDetails, 'nearby' => $nearby]);
     }
-
+//ad store with status 0
     public function adstore(Request $request)
     {
         # code...
-
         dd($request->all());
+        $ad = Advertise::create($request->all());
+       
+        session()->put('key', $value);
+        return redirect()->route('preview.adform')->with('success','Data inserted successfully');
+       // dd($request->all());
     }
-
+    //ad preview
+    public function preview(Request $request)
+    {
+        # code...
+        $ad = Advertise::create($request->all());
+        return view('frontend.preview_ad');
+        return redirect()->route('gallery.index')->with('success','Data inserted successfully');
+       // dd($request->all());
+    }
     public function terms()
     {
         # code...

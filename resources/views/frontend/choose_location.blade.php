@@ -119,6 +119,8 @@
       </div>
         @php
             $subregion = App\Models\Subregion::where('region',$item->id)->get();
+           // $ad_Category = session()->get($ad_Category);
+            session()->put('ad_Category', $ad_Category);
         @endphp
       <div class="countryContainer countrycont5 hideme">
         @foreach ($subregion as $item)

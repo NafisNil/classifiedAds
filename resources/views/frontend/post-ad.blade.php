@@ -98,9 +98,12 @@
     <div class="">
       <br />
       <ul>
-        
         <li>
-          <a href="{{route('choose.location')}}">Post local ad</a> ( Paid Premium And Sponsor ads )
+          <a href="{{route('choose.location', 1)}}">Post free ad </a>( Mainly free )
+        </li>
+        <li>
+          <a href="{{route('choose.location', 2
+        )}}">Post local ad</a> ( Paid Premium And Sponsor ads )
         </li>
         <li>
           <a href="multi-ad-choose-section">Post in multiple cities</a> ( Paid Premium And Sponsor ads )

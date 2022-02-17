@@ -67,9 +67,11 @@ Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/user_dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/post-role', [FrontendController::class, 'role'])->name('post.role');
     Route::get('/post-ad', [FrontendController::class, 'postad'])->name('post.ad');
-    Route::get('/choose-location', [FrontendController::class, 'choose'])->name('choose.location');
+    Route::get('/choose-location/{id}', [FrontendController::class, 'choose'])->name('choose.location');
     Route::get('/choose-category/{id}', [FrontendController::class, 'category'])->name('choose.category');
     Route::get('/choose-subcategory/{id}', [FrontendController::class, 'subcategory'])->name('choose.subcategory');
     Route::get('/user-adform/{id}', [FrontendController::class, 'adform'])->name('user.adform');
     Route::post('/post-adform', [FrontendController::class, 'adstore'])->name('adstore');
+    Route::get('/preview-adform', [FrontendController::class, 'preview'])->name('preview.adform');
+
 });
