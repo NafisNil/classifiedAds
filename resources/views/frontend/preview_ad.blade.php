@@ -18,8 +18,11 @@
         </li>
       </ul>
       <div id="previewAdLayout">
-        <h2 style="margin-bottom:-1px"> Amity Miller</h2>
-        <div class="adInfo"> Posted: Thu 17 February <br>
+        @php
+            $date = Carbon\Carbon::today();
+        @endphp
+        <h2 style="margin-bottom:-1px"> {{session()->get('title')}}</h2>
+        <div class="adInfo"> Posted: {{date_format($date, 'd M, Y')}} <br>
           <br>
         </div>
         <div style="padding-left:0em; font-size: 16px"> Poster age: <b></b>
@@ -87,6 +90,7 @@
           / /
           -->
         </style>
+      
         <!-- 
                                                                                       <![endif]-->
         <ul id="viewAdPhotoLayout" class="fivePlus"></ul>
@@ -94,16 +98,20 @@
           <br>
           <br>
           <div class="adInfo"> Phone: <a href="tel:+1 (513) 638-63">+1 (513) 638-63</a>
-            <br> Email: <a href="/cdn-cgi/l/email-protection#503b293c2926313831103d31393c393e31243f227e333f3d">
-              <span class="__cf_email__" data-cfemail="81eaf8edf8f7e0e9e0c1ece0e8ede8efe0f5eef3afe2eeec">[email&#160;protected]</span>
+            <br> Email: <a href="">
+              <span class="__cf_email__" >{{session()->get('email')}}</span>
             </a>
-          </div> Location : Ea aspernatur anim s <br>
-          <b>Category:</b> Surfing <br>
+          </div> Location : {{session()->get('location')}} <br>
+          @php
+            $subcategory_name = App\Models\Subcategory::select('name')->where('id', session()->get('subcategory'))->first();
+          @endphp
+          <b>Category:</b> {{$subcategory_name->name}} <br>
         </div>
         <br>
-        <form name="f" id="form" method="post" action="https://www.backlist24.org/free_post_done" enctype="multipart/form-data">
-          <input type="hidden" name="post_id" value="566313">
-          <input type="hidden" name="user_id" value="337839">
+        <form name="f" id="form" method="post" action="{{route('post_ad')}}" enctype="multipart/form-data">
+          @csrf
+          <input type="hidden" name="post_id" value="{{session()->get('post_id')}}">
+         
           <br>
           <input type="submit" name="submit" class="button" value="Place Ad Now">
         </form>

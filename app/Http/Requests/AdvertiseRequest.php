@@ -26,11 +26,12 @@ class AdvertiseRequest extends FormRequest
         return [
             //
             'title' => 'required',
-            'category' => 'required',
+            'subcategory' => 'required',
             'location' => 'required',
             'email' => 'required',
             'desc' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'logo' => 'mimes:jpg,png,svg,webp,jpeg'
         ];
     }
 }

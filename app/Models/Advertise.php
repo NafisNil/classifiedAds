@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Advertise extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'category', 'premium', 'weekly', 'desc', 'location', 'phone', 'email', 'age', 'cost'];
+    protected $fillable = ['title', 'subcategory', 'premium', 'weekly', 'desc', 'location', 'phone', 'email', 'age', 'cost', 'logo', 'user', 'city', 'status'];
     public function cityName()
     {
         # code...

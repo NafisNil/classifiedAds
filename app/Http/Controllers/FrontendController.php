@@ -14,7 +14,9 @@ use App\Models\Privacy;
 use App\Models\Aboutus;
 use App\Models\Contact;
 use App\Models\Advertise;
+use App\Http\Requests\AdvertiseRequest;
 use Session;
+use Image;
 class FrontendController extends Controller
 {
     //
@@ -86,11 +88,14 @@ class FrontendController extends Controller
 
     }
 
+/* ---------------free ad post -------------------*/
+
 
     public function adform($id)
     {
         # code...
         $city =Session::get('city');
+       
         $subcategory = $id;
         $cityDetails = City::find($city);
         $nearby = City::where('subregion', $cityDetails->subregion)->get();
@@ -98,25 +103,76 @@ class FrontendController extends Controller
         return view('frontend.user_adform',['city' => $city, 'subcategory'=>$subcategory, 'cityDetails' => $cityDetails, 'nearby' => $nearby]);
     }
 //ad store with status 0
-    public function adstore(Request $request)
+    public function adstore(AdvertiseRequest $request)
     {
         # code...
-        dd($request->all());
-        $ad = Advertise::create($request->all());
+        
+     // dd($request->subcategory);
+        $ad = Advertise::create([
+            'title' => $request->title,
+            'desc' => $request->desc,
+            'category' => $request->category,
+            'premium' => $request->premium,
+            'weekly' => $request->weekly,
+            'location' => $request->location,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'subcategory' => $request->subcategory,
+            'user' => $request->user,
+            'city' => $request->city,
+            
+            'age' => $request->age,
+            'cost' => $request->mtprice + $request->tcityprice,
+            'status' => '0',
+            'logo' => $request->logo
+        ]);
+        if ($request->hasFile('logo')) {
+            $this->_uploadImage($request, $ad);
+        }
        
-        session()->put('key', $value);
+        session()->put('post_id', $ad->id);
+        session()->put('title', $request->title);
+        session()->put('desc', $request->desc);
+        session()->put('phone', $request->phone);
+        session()->put('email', $request->email);
+        session()->put('location', $request->location);
+        session()->put('subcategory', $request->subcategory);
+       
         return redirect()->route('preview.adform')->with('success','Data inserted successfully');
        // dd($request->all());
     }
     //ad preview
-    public function preview(Request $request)
+    public function preview()
     {
         # code...
-        $ad = Advertise::create($request->all());
+      //  $ad = Advertise::create($request->all());
         return view('frontend.preview_ad');
-        return redirect()->route('gallery.index')->with('success','Data inserted successfully');
+      //  return redirect()->route('gallery.index')->with('success','Data inserted successfully');
        // dd($request->all());
     }
+
+    public function post_ad(Request $request)
+    {
+        # code...
+        $ad_Status = Advertise::findOrFail($request->post_id);
+        $ad_Status->update([
+            'status' => '1'
+        ]);
+
+        return redirect()->route('ad_confirm');
+    }
+
+    public function adConfirm()
+    {
+        # code...
+        return view('frontend.ad_confirm');
+    }
+
+
+
+/* ---------------free ad post -------------------*/
+
+
     public function terms()
     {
         # code...
@@ -159,5 +215,18 @@ class FrontendController extends Controller
     {
         # code...
         return view('frontend.reset');
+    }
+
+    private function _uploadImage($request, $ad)
+    {
+        # code...
+        if( $request->hasFile('logo') ) {
+            $image = $request->file('logo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(1000, 900)->save(public_path('storage/' . $filename));
+            $ad->logo = $filename;
+            $ad->save();
+        }
+       
     }
 }

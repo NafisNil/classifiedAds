@@ -362,11 +362,10 @@
       <form name="f" id="submit-all" method="post" action="{{route('adstore')}}" enctype="multipart/form-data">
         @csrf
         
-        <input type="hidden" name="category_id" value="{{$city}}">
-        <input type="hidden" name="sub_category_id" value="272">
-        <input type="hidden" name="country_id" value="6">
-        <input type="hidden" name="state_id" value="61">
-        <input type="hidden" value="{{$cost}}" name="cost">
+       
+       
+     
+       
         <h2>Step 1: Write Ad&nbsp; <span class="req" style="font-size:14px;font-weight:normal;">&nbsp;required fields&nbsp;</span>
         </h2>
         <ul id="stepButtons">
@@ -397,7 +396,7 @@
             <div id="sample">
               
               
-              <textarea name="description" id="description" cols="40"></textarea>
+              <textarea name="desc" id="description" cols="40"></textarea>
               <br />
             </div>
           </div>
@@ -441,15 +440,19 @@
           <span class="editAdText">Maximum 4 images, max size 2MB each.</span>
           <div class="form-group">
             <div class="custom-upload">
-              <input multiple accept="image" name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="images[]" data-form-data='{&quot;upload_preset&quot;:&quot;testpreset&quot;,&quot;tags&quot;:[336314,"tickets","sport","canada","alberta"]}'></input>
+              <input  accept="image" name="logo" type="file" class="cloudinary-fileupload" data-cloudinary-field="images[]" ></input>
             </div>
             <div class="uploaded_images" id="selectedFiles"></div>
           </div>
+          <input type="hidden" name="subcategory" value="{{$subcategory}}"/>
+        <input type="hidden" name="premium" value="0"/>
+        <input type="hidden" name="weekly" value="0"/>
+        <input type="hidden" name="user" value="{{Auth::user()->id}}"/>
         </div>
         <br clear="both">
-        <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
+        {{-- <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
         </h3>
-        <span class="editAdTitles">
+      <span class="editAdTitles">
           <b>Verified Ads</b>
           <br>
           <p>
@@ -474,7 +477,7 @@
               </div>
             </dd>
           </dl>
-        </div>
+        </div> --}} 
         <br>
         <br>
         <span class="editAdTitles">
@@ -482,15 +485,20 @@
           <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25">{{$ad_price}}</span>
           </span>
           <br>
-          @foreach ($nearby as $item)
+        {{--  @foreach ($nearby as $item)
             <input type="checkbox" name="citys" onclick="nearbycities(446)" id="NearByCities446" value="{{$item->id}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" @if ($item->id == $cityDetails->id)
               checked
             @endif>
             <label for="NearByCities">{{$item->name}} - {{$ad_price}}</label>
             <br>
           @endforeach
-         
-         
+          --}}
+          <input type="checkbox" name="city"  id="NearByCities446" value="{{$city}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25"
+              checked
+           @php
+             $cityname = App\Models\City::where('id', $city)->first();
+           @endphp
+            <label for="NearByCities">{{$cityname->name}} - {{$ad_price}}</label>
           <br>
           <br>
           <input type="checkbox" name="accept_terms" id="acceptTermsBox" style="float:left;" value="true">
@@ -524,6 +532,6 @@
   <input type="hidden" id="countimg" value='0'>
 
   <script>
-                        CKEDITOR.replace( 'description' );
+                        CKEDITOR.replace( 'desc' );
                 </script>
 @endsection
