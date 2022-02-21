@@ -15,6 +15,8 @@ class AdvertiseController extends Controller
     public function index()
     {
         //
+        $advertise = Advertise::orderBy('id','desc')->paginate(25);
+        return view('admin.advertise.index', ['advertise' => $advertise]);
     }
 
     /**

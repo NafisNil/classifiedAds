@@ -214,6 +214,47 @@
                   <th style="text-align:center;" class="firstz">Action</th>
                 </tr>
               </tbody>
+              @php
+                  $ads = App\Models\Advertise::where('user', Auth::user()->id)->orderBy('id','desc')->get();
+              @endphp
+              @foreach ($ads as $item)
+              <tr>
+                <th style="text-align:center;">
+                  @if ($item->status == 1)
+                      <span class="badge badge-success">Live</span>
+                  @else
+                     <span class="badge badge-danger">Not Live</span>
+                  @endif
+                </th>
+                <th style="text-align:center;" class="firsty">{{$item->title}}</th>
+                <th style="text-align:center;">{{$item->subcategoryName->name}}</th>
+                <th style="text-align:center;">
+                @if ($item->premium == 0)
+                <i class="fa fa-times-circle" style="color: red;font-size: 20px;" aria-hidden="true"></i>
+                @else
+                <i class="fa fa-check" style="color: rgb(40, 185, 72);font-size: 20px;" aria-hidden="true"></i>
+                @endif
+                </th>
+              
+                <th style="text-align:center;"> 
+                   @if ($item->weekly == 0)
+                  <i class="fa fa-times-circle" style="color: red;font-size: 20px;" aria-hidden="true"></i>
+                  @else
+                  <i class="fa fa-check" style="color: rgb(40, 185, 72);font-size: 20px;" aria-hidden="true"></i>
+                  @endif</th>
+                  
+                <th style="text-align:center;">
+                {{  \Carbon\Carbon::parse($item->created_at)->format('d M,Y')}}
+                </th>
+                <th style="text-align:center;" class="firstz">
+                  <a href="" > <button style="background: #127bde;border-radius:8px">Edit</button></a>
+                  <a href="" > <button style="background: #12debc;border-radius:8px">View</button></a>
+                  <a href="" > <button style="background: #de1267;border-radius:8px">Delete</button></a>
+                  
+                </th>
+              </tr>
+              @endforeach
+              
             </table>
             <ul class="pagination"></ul>
             <br />

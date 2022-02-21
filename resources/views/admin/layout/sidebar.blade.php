@@ -149,7 +149,15 @@
               </p>
             </a>
           </li>
-
+<hr>
+<li class="nav-item">
+  <a href="{{route('advertise.index')}}" class="nav-link {{$route == 'advertise.index'?'active':''}}">
+    <i class="nav-icon fas fa-th"></i>
+    <p>
+      All Advertise
+    </p>
+  </a>
+</li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -154,6 +154,7 @@ class FrontendController extends Controller
     public function post_ad(Request $request)
     {
         # code...
+        
         $ad_Status = Advertise::findOrFail($request->post_id);
         $ad_Status->update([
             'status' => '1'

@@ -14,6 +14,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\AdvertiseController;
 use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('term', TermController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('role', RoleController::class);
+    Route::resource('advertise', AdvertiseController::class);
 });
 
 

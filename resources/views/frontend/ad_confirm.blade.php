@@ -24,7 +24,7 @@
         <section class="manage-ad mx-3">
             <div class="alert alert-success">
             <span style="font-size: 16px"> Your ad posted successfully. Please waits Upto 15 Minutes :) </span> <br><br>
-            <a class="btn btn-success" href="#">Go Account</a>
+            <a class="btn btn-success" href="{{route('user.dashboard')}}">Go Account</a>
             </div>
             </section>
       </div>
