@@ -421,7 +421,7 @@
         <br>
         <div id="imageEditModule">
           <span class="editAdTitles">
-            <b>Add Images</b>
+            <b>Edit Images</b>
           </span>
           <br>
           

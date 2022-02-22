@@ -49,6 +49,9 @@ class AdvertiseController extends Controller
     public function show(Advertise $advertise)
     {
         //
+       return view('frontend.preview',[
+           'advertise' => $advertise
+       ]);
     }
 
     /**

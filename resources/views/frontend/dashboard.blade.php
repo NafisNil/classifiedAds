@@ -249,9 +249,13 @@
                 </th>
                 <th style="text-align:center;" class="firstz">
                   <a href="{{route('edit.adform', [$item])}}" > <button style="background: #127bde;border-radius:8px">Edit</button></a>
-                  <a href="" > <button style="background: #12debc;border-radius:8px">View</button></a>
-                  <a href="" > <button style="background: #de1267;border-radius:8px">Delete</button></a>
-                  
+                  <a href="{{route('advertise.show', [$item])}}" > <button style="background: #12debc;border-radius:8px">View</button></a>
+                
+                  <form action="{{route('advertise.destroy',[$item])}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button style="background: #de1267;border-radius:8px;color:white">Delete</button>
+                </form>
                 </th>
               </tr>
               @endforeach

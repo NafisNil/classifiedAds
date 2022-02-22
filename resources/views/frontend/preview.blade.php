@@ -1,22 +1,11 @@
 @extends('frontend.layout.master')
 @section('title')
-    Preview AdForm
+    View Ads
 @endsection
 @section('content')
 <div class="mainBody">
     <div style="max-height: 99999px;">
-      <h2>Step 2: Preview Ad</h2>
-      <ul id="stepButtons">
-        <li class="postAdButtonOn">
-          <div class="indexSectionHeader">Step 1: Write Ad</div>
-        </li>
-        <li class="postAdButtonOn">
-          <div class="indexSectionHeader">Step 2: Preview Ad</div>
-        </li>
-        <li class="postAdButtonOff">
-          <div class="indexSectionHeader">Step 3: All Done</div>
-        </li>
-      </ul>
+     
       <div id="previewAdLayout">
         @php
             $date = Carbon\Carbon::today();
@@ -94,27 +83,25 @@
         <!-- 
                                                                                       <![endif]-->
         <ul id="viewAdPhotoLayout" class="fivePlus"></ul>
-        <div class="posting"> {{$session()->get('title')}} <br>
+        <div class="posting"> {{$advertise->title}}<br>
           <br>
           <br>
+          <div class="" style="border: 1px solid #1b0602; max-width:64px; max-height:64px">
+             
+             <img src="{{(!empty($advertise->logo))?URL::to('storage/'.$advertise->logo):URL::to('image/no_image.png')}}" alt="" style="max-height: 63px; max-width:63px">
+           </div>
           <div class="adInfo"> Phone: <a href="tel:+1 (513) 638-63">+1 (513) 638-63</a>
             <br> Email: <a href="">
-              <span class="__cf_email__" >{{session()->get('email')}}</span>
+              <span class="__cf_email__" >{{$advertise->email}}</span>
             </a>
-          </div> Location : {{session()->get('location')}} <br>
+          </div> Location :{{$advertise->location}}<br>
           @php
-            $subcategory_name = App\Models\Subcategory::select('name')->where('id', session()->get('subcategory'))->first();
+            $subcategory_name = App\Models\Subcategory::select('name')->where('id', $advertise->subcategory)->first();
           @endphp
           <b>Category:</b> {{$subcategory_name->name}} <br>
         </div>
         <br>
-        <form name="f" id="form" method="post" action="{{route('post_ad')}}" enctype="multipart/form-data">
-          @csrf
-          <input type="hidden" name="post_id" value="{{session()->get('post_id')}}">
-         
-          <br>
-          <input type="submit" name="submit" class="button" value="Place Ad Now">
-        </form>
+      
       </div>
       <br>
       <br>

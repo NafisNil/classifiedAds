@@ -81,4 +81,7 @@ Route::group(['middleware' => ['auth','user']], function () {
     Route::put('/update-ad/{id}', [FrontendController::class, 'update_ad'])->name('adupdate');
     Route::get('/user-list', [UserController::class, 'userlist'])->name('user.list');
     Route::get('/user-delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('advertise/{advertise}', [AdvertiseController::class, 'show'])->name('advertise.show');
+    Route::delete('advertise/{advertise}', [AdvertiseController::class, 'destroy'])->name('advertise.destroy');
+    //Route::resource('advertise', AdvertiseController::class);
 });
