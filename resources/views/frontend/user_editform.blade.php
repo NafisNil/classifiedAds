@@ -437,18 +437,20 @@
             <div class="uploaded_images" id="selectedFiles"></div>
           </div>
           <input type="hidden" name="subcategory" value="{{$edit->subcategory}}"/>
-        <input type="hidden" name="premium" value="0"/>
-        <input type="hidden" name="weekly" value="0"/>
+       
         <input type="hidden" name="user" value="{{Auth::user()->id}}"/>
         </div>
         <br clear="both">
-        {{-- <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
+
+        {{-- paid single ad --}}
+        @if($ad_Category == 2)
+        <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
         </h3>
       <span class="editAdTitles">
           <b>Verified Ads</b>
           <br>
           <p>
-            <input type="checkbox" name="premium" id="premium" value="1"> Make this ad Verified for ( Verified ad will be shown on top of all Ads. ) $ <span id="premiumadval" data-near="5">{{$premium}}</span>
+            <input type="checkbox" name="premium" id="premium" value="{{$premium}}"> Make this ad Verified for ( Verified ad will be shown on top of all Ads. ) $ <span id="premiumadval" data-near="5">{{$premium}}</span>
           </p>
         </span>
         <span class="editAdTitles">
@@ -459,7 +461,42 @@
         <div id="purchaseSponsorAd" style="margin-bottom:1em;">
           <dl id="purchSponsorAd" class="clearfix" style="position:relative;margin-bottom:1em;">
             <dt style="float:left;">
-              <input style="position: relative; top: -3px;" type="checkbox" name="sponsor" id="sponsorAd" value="1">
+              <input style="position: relative; top: -3px;" type="checkbox" name="sponsor" id="sponsorAd" value="{{$sponsor}}">
+            </dt>
+            <dd style="line-height:1.5;margin-left:30px;">
+              <div class="editAdText"> Your ad will appear highlighted (Top and Bottom). </div>
+              <div class="editAdText" id="weeksNumber" style="margin:1em 0;"> Number of weeks: <select name="sponsor_weeks">
+                  <option value="1">1 week (${{$sponsor}})</option>
+                </select>
+              </div>
+            </dd>
+          </dl>
+        </div>
+        @elseif($ad_Category == 1){
+          <input type="hidden" name="premium" value="0"/>
+          <input type="hidden" name="weekly" value="0"/>
+        }
+        @endif
+        {{-- paid single ad --}}
+        
+        {{-- <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
+        </h3>
+      <span class="editAdTitles">
+          <b>Verified Ads</b>
+          <br>
+          <p>
+            <input type="checkbox" name="premium" id="premium" value="{{$premium}}"> Make this ad Verified for ( Verified ad will be shown on top of all Ads. ) $ <span id="premiumadval" data-near="5">{{$premium}}</span>
+          </p>
+        </span>
+        <span class="editAdTitles">
+          <b>Sponsor Ad</b>
+        </span>
+        <big> $ <span id="sponsoradval" data-near="2">{{$sponsor}}</span>
+        </big>
+        <div id="purchaseSponsorAd" style="margin-bottom:1em;">
+          <dl id="purchSponsorAd" class="clearfix" style="position:relative;margin-bottom:1em;">
+            <dt style="float:left;">
+              <input style="position: relative; top: -3px;" type="checkbox" name="sponsor" id="sponsorAd" value="{{$sponsor}}">
             </dt>
             <dd style="line-height:1.5;margin-left:30px;">
               <div class="editAdText"> Your ad will appear highlighted (Top and Bottom). </div>
@@ -470,6 +507,8 @@
             </dd>
           </dl>
         </div> --}} 
+
+
         <br>
         <br>
         <span class="editAdTitles">

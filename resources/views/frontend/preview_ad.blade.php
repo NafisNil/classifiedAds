@@ -13,6 +13,11 @@
         <li class="postAdButtonOn">
           <div class="indexSectionHeader">Step 2: Preview Ad</div>
         </li>
+        @if(session()->get('cost') > 0)
+        <li class="postAdButtonOff">
+          <div class="indexSectionHeader">Step 3: Activation</div>
+        </li>
+        @endif
         <li class="postAdButtonOff">
           <div class="indexSectionHeader">Step 3: All Done</div>
         </li>
@@ -94,7 +99,7 @@
         <!-- 
                                                                                       <![endif]-->
         <ul id="viewAdPhotoLayout" class="fivePlus"></ul>
-        <div class="posting"> {{$session()->get('title')}} <br>
+        <div class="posting"> {{session()->get('title')}} <br>
           <br>
           <br>
           <div class="adInfo"> Phone: <a href="tel:+1 (513) 638-63">+1 (513) 638-63</a>
@@ -106,8 +111,13 @@
             $subcategory_name = App\Models\Subcategory::select('name')->where('id', session()->get('subcategory'))->first();
           @endphp
           <b>Category:</b> {{$subcategory_name->name}} <br>
+          Cost:</b> {{session()->get('cost')}} <br>
         </div>
         <br>
+        @if(session()->get('cost') > 0)
+        <a href="{{route('paid.adform', session()->get('post_id'))}}"><button style="background:rgb(194, 26, 26);color:#fff">Place Ad Now</button></a>
+        @else
+        {{-- free ad--}}
         <form name="f" id="form" method="post" action="{{route('post_ad')}}" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="post_id" value="{{session()->get('post_id')}}">
@@ -115,6 +125,8 @@
           <br>
           <input type="submit" name="submit" class="button" value="Place Ad Now">
         </form>
+        @endif
+        {{-- free ad--}}
       </div>
       <br>
       <br>

@@ -72,11 +72,17 @@ Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/choose-location/{id}', [FrontendController::class, 'choose'])->name('choose.location');
     Route::get('/choose-category/{id}', [FrontendController::class, 'category'])->name('choose.category');
     Route::get('/choose-subcategory/{id}', [FrontendController::class, 'subcategory'])->name('choose.subcategory');
+    //free ad
     Route::get('/user-adform/{id}', [FrontendController::class, 'adform'])->name('user.adform');
     Route::post('/post-adform', [FrontendController::class, 'adstore'])->name('adstore');
     Route::get('/preview-adform', [FrontendController::class, 'preview'])->name('preview.adform');
     Route::post('/post-ad', [FrontendController::class, 'post_ad'])->name('post_ad');
     Route::get('/ad-confirm', [FrontendController::class, 'adConfirm'])->name('ad_confirm');
+
+    //paid single
+    Route::get('/paid-adform/{id}', [FrontendController::class, 'payment'])->name('paid.adform');
+    //pain single
+
     Route::get('/advertise/{advertise}/edit', [FrontendController::class, 'editAdform'])->name('edit.adform');
     Route::put('/update-ad/{id}', [FrontendController::class, 'update_ad'])->name('adupdate');
     Route::get('/user-list', [UserController::class, 'userlist'])->name('user.list');

@@ -107,13 +107,29 @@ class FrontendController extends Controller
     {
         # code...
         
-     // dd($request->subcategory);
+     // dd($request->premium);
+     if($request->premium == null){
+        $premium = 0;
+        $request->premium = 0;
+     }
+    else 
+        $premium = 1;
+
+
+        if($request->weekly == null){
+            $weekly = 0;
+            $request->weekly = 0;
+        }else{
+            $weekly = 1;
+        }
+            
+            //dd($request->premium);
         $ad = Advertise::create([
             'title' => $request->title,
             'desc' => $request->desc,
             'category' => $request->category,
-            'premium' => $request->premium,
-            'weekly' => $request->weekly,
+            'premium' => $premium,
+            'weekly' => $weekly,
             'location' => $request->location,
             'phone' => $request->phone,
             'email' => $request->email,
@@ -122,7 +138,7 @@ class FrontendController extends Controller
             'city' => $request->city,
             
             'age' => $request->age,
-            'cost' => $request->mtprice + $request->tcityprice,
+            'cost' => $request->mtprice + $request->tcityprice+$request->premium+$request->sponsor,
             'status' => '0',
             'logo' => $request->logo
         ]);
@@ -134,6 +150,7 @@ class FrontendController extends Controller
         session()->put('title', $request->title);
         session()->put('desc', $request->desc);
         session()->put('phone', $request->phone);
+        session()->put('cost', $ad->cost);
         session()->put('email', $request->email);
         session()->put('location', $request->location);
         session()->put('subcategory', $request->subcategory);
@@ -210,11 +227,16 @@ class FrontendController extends Controller
 
 /* ---------------free ad post -------------------*/
 
-/* --------------- paid post ---------------------*/
+/* --------------- paid post single---------------------*/
 
+    public function payment($id)
+    {
+        # code...
+        $ad_id = $id;
+        return view('frontend.payment_ad',['ad_id' =>$ad_id]);
+    }
 
-
-/*-------------- paid post ------------------------*/
+/*-------------- paid post single------------------------*/
 
 
     public function terms()

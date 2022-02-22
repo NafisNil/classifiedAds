@@ -95,6 +95,7 @@
               <span class="__cf_email__" >{{$advertise->email}}</span>
             </a>
           </div> Location :{{$advertise->location}}<br>
+          Cost: {{$advertise->cost}} <br>
           @php
             $subcategory_name = App\Models\Subcategory::select('name')->where('id', $advertise->subcategory)->first();
           @endphp
