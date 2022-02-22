@@ -83,5 +83,7 @@ class AdvertiseController extends Controller
     public function destroy(Advertise $advertise)
     {
         //
+        $advertise->delete();
+        return redirect()->back()->with('success', 'Data deleted successfully!');
     }
 }

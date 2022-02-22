@@ -58,6 +58,22 @@ class UserController extends Controller
         return view("frontend.dashboard");
     }
 
+    public function userlist()
+    {
+        # code...
+        $users = User::orderBy('id', 'desc')->paginate(30);
+        return view('admin.user.index',['users' => $users]);
+    }
+
+
+    public function delete($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'Data deleted successfully!');
+    }
+
 
 
 }

@@ -198,6 +198,7 @@
               <a class="btn btn-primary" href="https://www.backlist24.org/get-verified-badge">Verified</a>
             </div>
           </div>
+          @include('sessionMsg')
           <div class="payment_error"></div>
           <div class="clearcls"></div>
           <div id="dataTable">
@@ -247,7 +248,7 @@
                 {{  \Carbon\Carbon::parse($item->created_at)->format('d M,Y')}}
                 </th>
                 <th style="text-align:center;" class="firstz">
-                  <a href="" > <button style="background: #127bde;border-radius:8px">Edit</button></a>
+                  <a href="{{route('edit.adform', [$item])}}" > <button style="background: #127bde;border-radius:8px">Edit</button></a>
                   <a href="" > <button style="background: #12debc;border-radius:8px">View</button></a>
                   <a href="" > <button style="background: #de1267;border-radius:8px">Delete</button></a>
                   

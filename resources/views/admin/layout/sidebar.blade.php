@@ -158,6 +158,15 @@
     </p>
   </a>
 </li>
+
+<li class="nav-item">
+  <a href="{{route('user.list')}}" class="nav-link {{$route == 'user.list'?'active':''}}">
+    <i class="nav-icon fas fa-th"></i>
+    <p>
+      All User
+    </p>
+  </a>
+</li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

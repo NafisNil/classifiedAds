@@ -169,9 +169,52 @@ class FrontendController extends Controller
         return view('frontend.ad_confirm');
     }
 
+    public function editAdform(Advertise $advertise)
+    {
+        # code...
+        
+        return view('frontend.user_editform',[
+            'edit' => $advertise
+        ]);
+        //dd($advertise);
+    }
+
+
+    public function update_ad(Request $request,$id)
+    {
+        # code...
+      //  dd($request->all());
+      $advertise = Advertise::find($id);
+      
+        $advertise->update([
+       
+            'title' => $request->title,
+            'desc' => $request->desc,
+           
+            'location' => $request->location,
+            'phone' => $request->phone,
+            'email' => $request->email,
+           
+            'logo' => $request->logo
+                 
+        ]
+        );
+
+        if ($request->hasFile('logo')) {
+            $this->_uploadImage($request, $ad);
+        }
+        return redirect()->route('user.dashboard')->with('success', 'Data updated suuccessfully!');
+    }
+
 
 
 /* ---------------free ad post -------------------*/
+
+/* --------------- paid post ---------------------*/
+
+
+
+/*-------------- paid post ------------------------*/
 
 
     public function terms()
@@ -230,4 +273,7 @@ class FrontendController extends Controller
         }
        
     }
+
+
+
 }

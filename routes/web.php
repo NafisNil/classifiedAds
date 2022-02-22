@@ -77,5 +77,8 @@ Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/preview-adform', [FrontendController::class, 'preview'])->name('preview.adform');
     Route::post('/post-ad', [FrontendController::class, 'post_ad'])->name('post_ad');
     Route::get('/ad-confirm', [FrontendController::class, 'adConfirm'])->name('ad_confirm');
-
+    Route::get('/advertise/{advertise}/edit', [FrontendController::class, 'editAdform'])->name('edit.adform');
+    Route::put('/update-ad/{id}', [FrontendController::class, 'update_ad'])->name('adupdate');
+    Route::get('/user-list', [UserController::class, 'userlist'])->name('user.list');
+    Route::get('/user-delete', [UserController::class, 'delete'])->name('user.delete');
 });
