@@ -14,9 +14,11 @@ use App\Models\Privacy;
 use App\Models\Aboutus;
 use App\Models\Contact;
 use App\Models\Advertise;
+use App\Models\User;
 use App\Http\Requests\AdvertiseRequest;
 use Session;
 use Image;
+use DB;
 class FrontendController extends Controller
 {
     //
@@ -172,10 +174,20 @@ class FrontendController extends Controller
     {
         # code...
         
-        $ad_Status = Advertise::findOrFail($request->post_id);
-        $ad_Status->update([
-            'status' => '1'
-        ]);
+       
+        DB::transaction(function () use($request) {
+            $ad_Status = Advertise::findOrFail($request->post_id);
+            $user = User::where('id', $ad_Status->user)->first();
+            $ad_Status->update([
+                'status' => '1'
+            ]);
+
+            $user->balance = $user->balance - $ad_Status->cost;
+            $user->save();
+        });
+
+      
+
 
         return redirect()->route('ad_confirm');
     }

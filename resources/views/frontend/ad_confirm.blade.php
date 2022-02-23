@@ -16,6 +16,11 @@
         <li class="postAdButtonOn">
           <div class="indexSectionHeader">Step 2: Preview Ad</div>
         </li>
+        @if(session()->get('cost') > 0)
+        <li class="postAdButtonOn">
+          <div class="indexSectionHeader">Step 3: Activation</div>
+        </li>
+        @endif
         <li class="postAdButtonOn">
           <div class="indexSectionHeader">Step 3: All Done</div>
         </li>

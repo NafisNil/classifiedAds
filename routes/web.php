@@ -41,7 +41,7 @@ Route::get('/terms-condition', [FrontendController::class, 'terms'])->name('term
 Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy.policy');
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
-Route::get('/add-credit', [FrontendController::class, 'addCredit'])->name('add.credit');
+
 Route::get('/password-reset-form', [FrontendController::class, 'passwordReset'])->name('password.reset.form');
 Auth::routes();
 
@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/choose-location/{id}', [FrontendController::class, 'choose'])->name('choose.location');
     Route::get('/choose-category/{id}', [FrontendController::class, 'category'])->name('choose.category');
     Route::get('/choose-subcategory/{id}', [FrontendController::class, 'subcategory'])->name('choose.subcategory');
+    Route::get('/add-credit', [FrontendController::class, 'addCredit'])->name('add.credit');
     //free ad
     Route::get('/user-adform/{id}', [FrontendController::class, 'adform'])->name('user.adform');
     Route::post('/post-adform', [FrontendController::class, 'adstore'])->name('adstore');

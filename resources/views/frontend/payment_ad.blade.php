@@ -14,7 +14,7 @@
           <div class="indexSectionHeader">Step 2: Preview Ad</div>
         </li>
         @if(session()->get('cost') > 0)
-        <li class="postAdButtonOff">
+        <li class="postAdButtonOn">
           <div class="indexSectionHeader">Step 3: Activation</div>
         </li>
         @endif
@@ -37,7 +37,7 @@
             </div>
             <hr noshade="">
             @if ($cost->cost > Auth::user()->balance)
-                <a href=""><button style="background: red;color:aliceblue;border-radius:3px"> Pay Now </button></a>
+                <a href="{{route('add.credit')}}"><button style="background: red;color:aliceblue;border-radius:3px"> Pay Now </button></a>
             @else
             <form name="f" id="form" method="post" action="{{route('post_ad')}}" enctype="multipart/form-data">
                 @csrf

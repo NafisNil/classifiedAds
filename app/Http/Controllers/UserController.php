@@ -61,7 +61,7 @@ class UserController extends Controller
     public function userlist()
     {
         # code...
-        $users = User::orderBy('id', 'desc')->paginate(30);
+        $users = User::where('role','admin')->orderBy('id', 'desc')->paginate(30);
         return view('admin.user.index',['users' => $users]);
     }
 
