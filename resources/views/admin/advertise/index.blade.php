@@ -25,7 +25,7 @@
              <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Advertise</h3>
-              
+              <a href="#" class="btn btn-outline-danger btn-sm content-justify float-right" id="deleteAllSelectedRecord" >Delete Selected</a>
                   
               </div>
               <!-- /.card-header -->
@@ -34,6 +34,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th><input type="checkbox" name="" id="chkCheckAll"></th>
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
@@ -52,7 +53,8 @@
                        $username = App\Models\User::select('name','email')->where('id',$item->user)->first();
                    @endphp     
                    
-                  <tr>
+                  <tr id="sid{{$item->id}}">
+                    <td><input type="checkbox" name="ids" id="" value="{{$item->id}}" class="checkBoxClass"></td>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$username->name}}</td>
                     <td>{{$username->email}}</td>
@@ -78,6 +80,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th></th>
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
@@ -104,6 +107,38 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function(e){
+        $("#chkCheckAll").click(function(){
+          $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+        })
+      });
+
+      $('#deleteAllSelectedRecord').click(function(e){
+        e.preventDefault();
+        var allids = [];
+
+        $("input:checkbox[name = ids]:checked").each(function (e) {
+            allids.push($(this).val());
+        });
+
+        $.ajax({
+          url:"{{route('student.deleteSelected')}}",
+          type:'DELETE',
+          data:{
+            _token:$("input[name=_token]").val(),
+            ids:allids
+          },
+          success:function(response){
+            $.each(allids, function(key, val){
+              $("#sid"+val).remove();
+            });
+          }
+
+        });
+      });
+    </script>
 @endsection
 
  

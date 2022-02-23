@@ -10,7 +10,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div>
@@ -25,14 +25,29 @@
           <div class="col-12">
            
             <!-- /.card -->
-
+            @php
+                $user = App\Models\User::count();
+                $post = App\Models\Advertise::count();
+                $paidPost = App\Models\Advertise::where('premium','!=','0')->orWhere('weekly','!=','0')->count();
+            @endphp
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Dashboard</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                  
+                <div class="container  bg-success">
+                  <h2>User</h2>
+                  <div class="well">{{$user}}</div>
+                </div>
+                <div class="container  bg-info">
+                  <h2>Post</h2>
+                  <div class="well">{{$post}}</div>
+                </div>
+                <div class="container  bg-secondary">
+                  <h2>Paid Post</h2>
+                  <div class="well">{{$paidPost}}</div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>

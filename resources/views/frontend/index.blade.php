@@ -96,6 +96,7 @@
     </style>
   </head>
   <body id=home class=backpage cz-shortcut-listen=true oncontextmenu="if (!window.__cfRLUnblockHandlers) return false; return true;" data-cf-modified-8be023f40026e15c652da7ef-="">
+   
     <div id=mainWrapper>
       <p class=floatp>
         <span>
@@ -127,6 +128,10 @@
           
         </div>
         <div>Choose a location:</div>
+
+        <div>
+          <img src="{{asset('frontend')}}/image/banner.jpeg" alt="">
+        </div>
       </div>
       <div class="autocomplete">
         <div id="popup"></div>

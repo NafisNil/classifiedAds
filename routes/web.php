@@ -61,6 +61,11 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('contact', ContactController::class);
     Route::resource('role', RoleController::class);
     Route::resource('advertise', AdvertiseController::class);
+    Route::get('/user-list', [UserController::class, 'userlist'])->name('user.list');
+    Route::get('/user-delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('/user-admin-edit/{id}', [UserController::class, 'edit'])->name('user.admin.edit.form');
+    Route::post('/user-admin-update/{id}', [UserController::class, 'update'])->name('user.admin.update');
+    Route::delete('/selected-students', [AdvertiseController::class, 'deletedCheckedStudents'])->name('student.deleteSelected');
 });
 
 
@@ -86,8 +91,7 @@ Route::group(['middleware' => ['auth','user']], function () {
 
     Route::get('/advertise/{advertise}/edit', [FrontendController::class, 'editAdform'])->name('edit.adform');
     Route::put('/update-ad/{id}', [FrontendController::class, 'update_ad'])->name('adupdate');
-    Route::get('/user-list', [UserController::class, 'userlist'])->name('user.list');
-    Route::get('/user-delete', [UserController::class, 'delete'])->name('user.delete');
+  
     Route::get('advertise/{advertise}', [AdvertiseController::class, 'show'])->name('advertise.show');
     Route::delete('advertise/{advertise}', [AdvertiseController::class, 'destroy'])->name('advertise.destroy');
     //Route::resource('advertise', AdvertiseController::class);

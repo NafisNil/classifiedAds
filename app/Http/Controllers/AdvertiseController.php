@@ -89,4 +89,12 @@ class AdvertiseController extends Controller
         $advertise->delete();
         return redirect()->back()->with('success', 'Data deleted successfully!');
     }
+
+    public function deletedCheckedStudents(Request $request)
+    {
+        # code...
+        $ids= $request->ids;
+        Advertise::whereIn('id', $ids)->delete();
+        return response()->json(['success' => 'Data deleted successfully']);
+    }
 }

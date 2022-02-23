@@ -64,7 +64,7 @@
         <div onclick="openNav()" class="nav-trigger sidebar-toggle" data-cf-modified-5cf69b7f358dec5e96f44dff-="">nav</div>
         <div id="postAdButton" class="tlBlock logome" style="display: block; height: auto; float: left; padding: 0 !important;">
             <a title="backlist24 logo" href="{{route('index')}}" title="backlist24 logo">
-                <img style="width: 158px; height: 40px; padding-top: 2px;" alt="backlist24" title="backlist24" class="logow" src="https://www.backlist24.com/assets/frontend/img/logobr.png">
+                <img style="width: 158px; height: 40px; padding-top: 2px;" alt="backlist24" title="backlist24" class="logow" src="{{asset('frontend')}}/image/logo.png"> 
             </a>
         </div>
         @if (Auth::check())

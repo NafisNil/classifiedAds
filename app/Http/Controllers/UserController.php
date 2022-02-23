@@ -61,8 +61,25 @@ class UserController extends Controller
     public function userlist()
     {
         # code...
-        $users = User::where('role','admin')->orderBy('id', 'desc')->paginate(30);
+        $users = User::where('role','user')->orderBy('id', 'desc')->paginate(30);
+       // dd($users);
         return view('admin.user.index',['users' => $users]);
+    }
+
+    public function edit($id)
+    {
+        # code...
+        $edit = User::find($id);
+        return view('admin.user.edit', ['edit' => $edit]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->balance = $request->balance;
+        $user->save();
+        return redirect()->route('user.list')->with('success', 'Data updated successfully!');
     }
 
 

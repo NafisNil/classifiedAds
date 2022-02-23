@@ -34,10 +34,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                   
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
-                    <th>Mobile</th>
+                    <th>Balance</th>
                    
                     <th>Action</th>
                    
@@ -49,14 +50,15 @@
                  
                    
                   <tr>
+                    
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
-                    <td>{{$item->mobile}}</td>
+                    <td>{{$item->balance}}</td>
                   
                     <td>
-                   
-                    
+                      
+                      <a href="{{route('user.admin.edit.form',[$item->id])}}"><button class="btn btn-outline-info btn-sm"><i class="fas fa-pen-square"></i></button></a>
                       <form action="{{route('user.delete',[$item->id])}}" method="POST">
                         @method('DELETE')
                         @csrf
@@ -72,17 +74,18 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                  
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
-                    <th>Mobile</th>
+                    <th>Balance</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>
 
                 <div class="d-flex justify-content-center">
-                {!! $user->appends(Request::all())->links() !!}
+                {!! $users->appends(Request::all())->links() !!}
               </div>
               </div>
               <!-- /.card-body -->
