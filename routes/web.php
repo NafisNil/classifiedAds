@@ -14,6 +14,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\AdvertiseController;
 use Laravel\Socialite\Facades\Socialite;
 /*
@@ -41,6 +43,10 @@ Route::get('/terms-condition', [FrontendController::class, 'terms'])->name('term
 Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy.policy');
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
+//section
+Route::get('/section', [SectionController::class, 'index'])->name('section.index');
+
+Route::get('/search',[SearchController::class, 'search']);
 
 Route::get('/password-reset-form', [FrontendController::class, 'passwordReset'])->name('password.reset.form');
 Auth::routes();

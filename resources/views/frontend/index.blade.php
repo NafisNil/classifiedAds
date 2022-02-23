@@ -94,6 +94,7 @@
         text-align: left !important;
       }
     </style>
+    <meta name="_token" content="{{ csrf_token() }}">
   </head>
   <body id=home class=backpage cz-shortcut-listen=true oncontextmenu="if (!window.__cfRLUnblockHandlers) return false; return true;" data-cf-modified-8be023f40026e15c652da7ef-="">
    
@@ -135,7 +136,11 @@
       </div>
       <div class="autocomplete">
         <div id="popup"></div>
-        <input id="myInput" type="text" name="myCountry" placeholder="Search Cities">
+        <div class="form-group">
+        <input id="myInput" type="text" name="search" placeholder="Search Cities">
+        </div>
+        <span class="citysearch">
+        </span>
       </div>
       <div id="geoListings">
         @foreach ($region as $item)
@@ -377,5 +382,22 @@
     </script>
     </script>
     <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8be023f40026e15c652da7ef-|49" defer=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('#myInput').on('keyup',function(){
+      $value=$(this).val();
+      $.ajax({
+      type : 'get',
+      url : '{{URL::to('search')}}',
+      data:{'search':$value},
+      success:function(data){
+      $('.citysearch').html(data);
+      }
+      });
+      })
+      </script>
+      <script type="text/javascript">
+      $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+      </script>
   </body>
 </html>
