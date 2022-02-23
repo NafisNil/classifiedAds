@@ -32,11 +32,12 @@ class FrontendController extends Controller
         return view('frontend.index',['region' => $region]);
     }
 
-    public function category_list()
+    public function category_list($id)
     {
         # code...
+        $city = $id;
         $category = Category::all();
-        return view('frontend.layout.home',['category' => $category]);
+        return view('frontend.layout.home',['category' => $category, 'city' => $city]);
     }
 
     public function login()

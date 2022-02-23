@@ -164,7 +164,7 @@
                         @foreach ($city as $item)
                       
                       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <a itemprop="item" title="backlist24 Auburn" href="{{route('category.list')}}">
+                        <a itemprop="item" title="backlist24 Auburn" href="{{route('category.list',$item->id)}}">
                           <span itemprop="name">{{$item->name}}</span>
                         </a>
                         <meta itemprop="position" content="1" />

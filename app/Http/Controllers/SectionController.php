@@ -12,5 +12,7 @@ class SectionController extends Controller
     public function index($cityid)
     {
         # code...
+        $city = $cityid;
+        return view('frontend.section',['city' => $city]);
     }
 }

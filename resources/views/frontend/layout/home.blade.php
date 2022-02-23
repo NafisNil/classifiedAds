@@ -14,14 +14,16 @@
             </div>
             @php
                 $subcategory = App\Models\Subcategory::where('category',$item->id)->get();
+                session()->put('city', $city);
+
             @endphp
             <ul class="categoryul" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/OfferCatalog">
                 @foreach ($subcategory as $item)
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/OfferCatalog">
-                    <a title="backlist24 {{$item->name}}" href="https://auburn.backlist24.com/terms/female-escorts" class="listlinkclass">
+                    <a title="bedpage24 {{$item->name}}" href="{{route('post.list', $item->id)}}" class="listlinkclass">
                         <span itemprop="name">{{$item->name}}</span>
                     </a>
-                </li>
+                </li> 
                 @endforeach
                
 

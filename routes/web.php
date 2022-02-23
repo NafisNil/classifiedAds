@@ -17,6 +17,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\AdvertiseController;
+use App\Http\Controllers\PostController;
 use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ use Laravel\Socialite\Facades\Socialite;
 });*/
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/category_list', [FrontendController::class, 'category_list'])->name('category.list');
+Route::get('/category_list/{id}', [FrontendController::class, 'category_list'])->name('category.list');
 Route::get('/user-login', [FrontendController::class, 'login'])->name('user.login');
 Route::post('/signup-store',[UserController::class, 'signup'])->name('signup.store');
 Route::post('/login-store',[UserController::class, 'login'])->name('login.store');
@@ -43,8 +44,8 @@ Route::get('/terms-condition', [FrontendController::class, 'terms'])->name('term
 Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy.policy');
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
-//section
-Route::get('/section', [SectionController::class, 'index'])->name('section.index');
+//post
+Route::get('/post_list/{id}', [PostController::class, 'index'])->name('post.list');
 
 Route::get('/search',[SearchController::class, 'search']);
 
