@@ -89,7 +89,7 @@
     }
   </style>
   <div id="cookieCrumb">
-    <a href="https://www.backlist24.org/">Home</a> &gt; <a href="#">post ad</a>
+    <a href="{{route('index')}}">Home</a> &gt; <a href="#">post ad</a>
     <span id="crumbSectionName"></span>
     <span id="crumbCategoryName"></span>
   </div>
@@ -106,7 +106,8 @@
         )}}">Post local ad</a> ( Paid Premium And Sponsor ads )
         </li>
         <li>
-          <a href="multi-ad-choose-section">Post in multiple cities</a> ( Paid Premium And Sponsor ads )
+          <a href="{{route('choose.location', 2
+          )}}">Post in multiple cities</a> ( Paid Premium And Sponsor ads )
         </li>
         <br />
         <br />

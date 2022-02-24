@@ -107,7 +107,7 @@
       </h2>
     </div>
     <div class="mainBody">
-      <div class="infobox" style="display: none">Find Escorts in Lawrence at Backpage Lawrence. The best site for genuine backpage Body rubs in Lawrence. Post Lawrence Body rubs ad on Backpage Lawrence for free. Explore Backpage Lawrence for endless exciting posting options.if you are looking for <b>cityxguide Lawrence Body rubs</b> or <b>adultsearch Lawrence Body rubs</b> or <b>adult search Lawrence Body rubs</b> then backlist24 is the best site to visit </div>
+      
       <div id="superRegionNavMenu">
           @foreach ($subregion as $item)
           <a title=""  href="" class="inactive"> {{$item->name}}</a> &nbsp;|
@@ -130,8 +130,8 @@
       <div class="metaFieldLabel metaField_Label">
         <div class="viewModeSelector">
           <b class="selectedHighlight">
-            <a href="https://wichita.backlist24.org/post/bodyrubs" rel="nofollow">List View</a>
-          </b> | <a href="https://wichita.backlist24.org/post/bodyrubs/gallery" rel="nofollow">Gallery View</a>
+            <a href="#" rel="nofollow">List View</a>
+          </b> | <a href="#" rel="nofollow">Gallery View</a>
         </div>
       </div>
     </div>
@@ -195,7 +195,7 @@
             <div class="cat ad-549152" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
                 @foreach ($items as $item)
                 <div class="card">
-              <a itemprop="itemOffered" itemscope itemtype="https://schema.org/Service" title="{{$item->title}}" href="https://lawrence.backlist24.org/view/bodyrubs/i-039-m-available-24-7-for-any-hookup-service-both-incall-or-out-549152">
+              <a itemprop="itemOffered" itemscope itemtype="https://schema.org/Service" title="{{$item->title}}" href="{{route('post.single', $item->id)}}">
                 <img src="{{(!empty($item->logo))?URL::to('storage/'.$item->logo):URL::to('image/no_image.png')}}" alt="" style="max-width: 64px; max-height:64px">
                 <i class="fa fa-trash" style="color: red"></i>
                 @if ($item->premium != 0)

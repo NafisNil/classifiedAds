@@ -46,6 +46,7 @@ Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about.us'
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact.us');
 //post
 Route::get('/post_list/{id}', [PostController::class, 'index'])->name('post.list');
+Route::get('/post_single/{id}', [PostController::class, 'single'])->name('post.single');
 
 Route::get('/search',[SearchController::class, 'search']);
 

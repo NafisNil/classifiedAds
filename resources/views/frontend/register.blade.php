@@ -5,7 +5,7 @@
 @section('content')
 <div id="pageBackground">
     <div id="breadcrumbs">
-    <a href="https://www.backlist24.org/"> Home</a> &gt; Registration form
+    <a href="{{route('index')}}"> Home</a> &gt; Registration form
     </div>
     <div id="centralIndexModule">
        
@@ -13,7 +13,7 @@
            
           <div id="loginForm">
            
-            <img alt="backlist24" title="backlist24" src="https://www.backlist24.org/assets/frontend/img/logo.png" />
+            <img alt="bedpage24" title="bedpage24" src="{{asset('frontend/image/logo.png')}}" />
             <div class="wrpper">
               <div class="error">@include('admin.sessionFront') </div>
               <h1>Sign Up Form</h1>

@@ -3,12 +3,12 @@
 
 <head>
     <title>@yield('title')</title>
-    <meta name="description" content="Backpage Auburn escorts near me, backlist24 is the most popular classified site, jobs, sale, apartments, female escort, body rubs, strip clubs, dating" />
+    <meta name="description" content="Backpage Auburn escorts near me, bedpage24 is the most popular classified site, jobs, sale, apartments, female escort, body rubs, strip clubs, dating" />
     <meta name="keywords" content="backpage Auburn, backpage massage, Auburn backpage escorts, backpage singles, Auburn hookup, women seeking men, Auburn meetup, strippers, body rub websites, female models, adult ad sites, escort ads, ts escort, the escort, new backpage, classified ads"
     />
     <meta name="robots" content="index">
     <meta name="robots" content="all">
-    <link rel="canonical" href="https://auburn.backlist24.com/" />
+    <link rel="canonical" href="#" />
     <link rel="shortcut icon" href="https://www.backlist24.com/assets/frontend/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,6 +24,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/loginmain.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/addCreditpage.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/managead.css">
+
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/colorbox.css" />
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/viewadnew.css" />
+    <script src="{{asset('frontend')}}/js/jquery.colorbox.js"></script>
+    <script src="{{asset('frontend')}}/js/color.js"></script>
+
     <script src="https://cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143223964-1" type="text/javascript"></script>
     <script type="text/javascript">
@@ -63,20 +69,20 @@
     <div id="tlHeader" class="siteHeader">
         <div onclick="openNav()" class="nav-trigger sidebar-toggle" data-cf-modified-5cf69b7f358dec5e96f44dff-="">nav</div>
         <div id="postAdButton" class="tlBlock logome" style="display: block; height: auto; float: left; padding: 0 !important;">
-            <a title="backlist24 logo" href="{{route('index')}}" title="backlist24 logo">
-                <img style="width: 158px; height: 40px; padding-top: 2px;" alt="backlist24" title="backlist24" class="logow" src="{{asset('frontend')}}/image/logo.png"> 
+            <a title="bedpage24 logo" href="{{route('index')}}" title="bedpage24 logo">
+                <img style="width: 158px; height: 40px; padding-top: 2px;" alt="bedpage24" title="bedpage24" class="logow" src="{{asset('frontend')}}/image/logo.png"> 
             </a>
         </div>
         @if (Auth::check())
         <div id="postAdButton" class="tlBlock">
            
-          <a title="backlist24 post ad" href="{{route('post.ad')}}">post ad <i class="fa fa-paper-plane-o"></i></a>
+          <a title="bedpage24 post ad" href="{{route('post.ad')}}">post ad <i class="fa fa-paper-plane-o"></i></a>
        
         </div>
         @else
         <div id="postAdButton" class="tlBlock">
          
-            <a title="backlist24 post ad" href="{{route('user.login')}}" class="postbtncls">post ad  <i class="fa fa-paper-plane-o"></i></a>
+            <a title="bedpage24 post ad" href="{{route('user.login')}}" class="postbtncls">post ad  <i class="fa fa-paper-plane-o"></i></a>
   
           </div>
         @endif

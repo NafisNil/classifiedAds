@@ -80,7 +80,7 @@
   </style>
       <div id="pageBackground">
         <div id="cookieCrumb">
-          <a href="https://www.backlist24.org/" referrerpolicy="origin-when-cross-origin">Home</a> &gt; <h1> Manage Ads</h1>
+          <a href="{{route('index')}}" referrerpolicy="origin-when-cross-origin">Home</a> &gt; <h1> Manage Ads</h1>
         </div>
         <div id="manage_ads">
           <style>
@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="col-12 p-5" role="alert">
-            <div class="col-12 p-5" style="border:1px solid #483483;background:#d3d3d3">We request you not upload any nude or vulgar images and vulgar language like-( bitch, college girl, sugar baby, Porn girl, Drugs, Alcohol Etc ) please ignore post in your account. We are looking forward to your cooperation to make backlist24 a safe and secure platform for everyone <a title="Post Roles policy" href="{{route('post.role')}}">Post Roles</a>
+            <div class="col-12 p-5" style="border:1px solid #483483;background:#d3d3d3">We request you not upload any nude or vulgar images and vulgar language like-( bitch, college girl, sugar baby, Porn girl, Drugs, Alcohol Etc ) please ignore post in your account. We are looking forward to your cooperation to make Bedpage24 a safe and secure platform for everyone <a title="Post Roles policy" href="{{route('post.role')}}">Post Roles</a>
               </a>
             </div>
           </div>
@@ -171,7 +171,7 @@
           <nav style="margin-top: 20px !important" class="navbar navbar-inverse hidden-xs">
             <div class="container-fluid kundansd">
               <div class="navbar-header">
-                <a class="navbar-brand" href="https://www.backlist24.org/manage-ads">
+                <a class="navbar-brand" href="{{route('user.dashboard')}}">
                   <i class="fa fa-home"></i>
                 </a>
               </div>
@@ -183,7 +183,7 @@
                   <a style="color:#d3d3d3 !important;" href="#">Manage Ads</a>
                 </li>
                 <li>
-                  <a href="https://www.backlist24.org/get-verified-badge">Get Verified Badge</a>
+                  <a href="#">Get Verified Badge</a>
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -193,9 +193,9 @@
           </nav>
           <div class="show-xs">
             <div class="btn-group btn-group-justified">
-              <a class="btn btn-primary" href="https://www.backlist24.org/add-credit">Buy Credits</a>
-              <a style="background-color:#286090;border-color:#204d74;" class="btn btn-primary" href="https://www.backlist24.org/manage-ads">Manega</a>
-              <a class="btn btn-primary" href="https://www.backlist24.org/get-verified-badge">Verified</a>
+              <a class="btn btn-primary" href="{{route('add.credit')}}">Buy Credits</a>
+              <a style="background-color:#286090;border-color:#204d74;" class="btn btn-primary" href="#">Manega</a>
+              <a class="btn btn-primary" href="#">Verified</a>
             </div>
           </div>
           @include('sessionMsg')

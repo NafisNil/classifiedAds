@@ -31,7 +31,7 @@ class AdvertiseRequest extends FormRequest
             'email' => 'required',
             'desc' => 'required',
             'phone' => 'required',
-            'logo' => 'mimes:jpg,png,svg,webp,jpeg'
+            'logo' => 'mimes:jpg,png,svg,webp,jpeg,gif'
         ];
     }
 }

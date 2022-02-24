@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Ad Credit - backlist24.org</title>
-    <meta name="description" content="backlist24 is site similar to backpage and the alternative of backpage. People love us as the best backpage replacement or sites similar to backpage." />
-    <meta name="keywords" content="backpage, back page, sites similar to backpage, alternative to backpage, sites like backpage and craigslist personals, backpage replacement, backpage substitute, backlist24" />
-    <link rel="canonical" href="https://www.backlist24.org/" />
+    <title>Ad Credit - bedpage24.org</title>
+    <meta name="description" content="bedpage24 is site similar to backpage and the alternative of backpage. People love us as the best backpage replacement or sites similar to backpage." />
+    <meta name="keywords" content="backpage, back page, sites similar to backpage, alternative to backpage, sites like backpage and craigslist personals, backpage replacement, backpage substitute, bedpage24" />
+    <link rel="canonical" href="#" />
     <link rel="shortcut icon" alt="similar to backpage, new backpage, back page replacement, backpage alternative" href="https://www.backlist24.org/assets/frontend/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <noscript>
@@ -22,12 +22,12 @@
     <div id="tlHeader" class="siteHeader">
       <div onclick="openNav()" class="nav-trigger sidebar-toggle">nav</div>
       <div id="postAdButton" class="tlBlock logome" style="display: block; height: auto; float: left; padding: 0 !important;">
-        <a href="https://www.backlist24.org/">
-          <img style="width: 158px; height: 40px; padding-top: 2px;" alt="backlist24" title="backlist24" class="logow" src="https://www.backlist24.org/assets/frontend/img/logobr.png">
+        <a href="{{route('index')}}">
+          <img style="width: 158px; height: 40px; padding-top: 2px;" alt="bedpage24" title="bedpage24" class="logow" src="{{asset('frontend/image/logo.png')}}">
         </a>
       </div>
       <div id="postAdButton" class="tlBlock">
-        <a title="post ad" class="postbtncls" href="https://www.backlist24.org/post-ad">
+        <a title="post ad" class="postbtncls" href="{{route('post.ad')}}">
           <i class="fa fa-paper-plane-o"></i> Post ad </a>
       </div>
       <div id="community" class="tlBlock">
@@ -38,27 +38,37 @@
     </div>
     <div id="mySidenavmySidenav" class="sidenav">
       <div class="menupb">
-        <a href="https://www.backlist24.org/post-ad" class="menubutton">Post ad</a>
+        <a href="{{route}}" class="menubutton">Post ad</a>
       </div>
       <ul class="myulSidenav">
         <li>
-          <a href="https://www.backlist24.org/">Home</a>
+          <a href="{{route('index')}}">Home</a>
         </li>
         <li>
-          <a href="https://www.backlist24.org/manage-ads">My Account</a>
+          <a href="{{route('user.dashboard')}}">My Account</a>
         </li>
         <li>
-          <a href="https://www.backlist24.org/add-credit">Buy Credits</a>
+          <a href="{{route('add.credit')}}">Buy Credits</a>
         </li>
         <li>
-          <a href="https://www.backlist24.org/logout">Logout</a>
+          @if (Auth::check())
+          <a title="my account" href="{{route('user.dashboard')}}">My Account</a>
+          <a title="my account" href="{{route('logout')}}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">Logout</a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+          @else
+         
+          <a title="Login" href="{{route('user.login')}}">Login / Signup</a>
+          @endif
         </li>
       </ul>
       <br />
       <b> &nbsp; Nearby Cities</b>
       <ul class="menucities">
         <li class="nav-item">
-          <a href="https://www.backlist24.org/">Go to Home</a>
+          <a href="{{route('index')}}">Go to Home</a>
         </li>
       </ul>
     </div>
@@ -69,30 +79,30 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/css/addCreditpage.css">
     <div id="pageBackground">
       <div id="cookieCrumb">
-        <a href="https://www.backlist24.org/">Home</a> &gt; <a href="https://www.backlist24.org/manage-ads"> Manage Ads</a>
+        <a href="{{route('index')}}">Home</a> &gt; <a href="{{route('user.dashboard')}}"> Manage Ads</a>
       </div>
       <div id="manage_ads">
         <div class="userinfo">
           <nav style="margin-top: 20px !important" class="navbar navbar-inverse hidden-xs">
             <div class="container-fluid kundansd">
               <div class="navbar-header">
-                <a class="navbar-brand" href="https://www.backlist24.org/manage-ads">
+                <a class="navbar-brand" href="{{route('user.dashboard')}}">
                   <i class="fa fa-home"></i>
                 </a>
               </div>
               <ul class="nav navbar-nav">
                 <li>
-                  <a style="color:#d3d3d3 !important;" href="#">Buy Credits</a>
+                  <a style="color:#d3d3d3 !important;" href="{{route('add.credit')}}">Buy Credits</a>
                 </li>
                 <li>
-                  <a href="https://www.backlist24.org/manage-ads">Manage Ads</a>
+                  <a href="{{route('user.dashboard')}}">Manage Ads</a>
                 </li>
                 <li>
-                  <a href="https://www.backlist24.org/get-verified-badge">Get Verified Badge</a>
+                  <a href="#">Get Verified Badge</a>
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <a type="button" class="navbar-btn btn btn-gradient-red" am-latosans="bold" href="https://www.backlist24.org/add-credit">Buy Credits</a>
+                <a type="button" class="navbar-btn btn btn-gradient-red" am-latosans="bold" href="{{route('add.credit')}}">Buy Credits</a>
               </ul>
             </div>
           </nav>

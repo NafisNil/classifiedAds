@@ -38,6 +38,7 @@
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
+                    <th>Cost</th>
                     <th>Title</th>
                     <th>City</th>
                     <th>Category</th>
@@ -58,6 +59,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$username->name}}</td>
                     <td>{{$username->email}}</td>
+                    <td>{{$item->cost}}</td>
                     <td>{{$item->title}}</td>
                     <td>{{$item->cityName->name}}</td>
                     <td>{{$item->subcategoryName->name}}</td>
@@ -84,6 +86,7 @@
                     <th>#</th>
                     <th>User</th>
                     <th>Email</th>
+                    <th>Cost</th>
                     <th>Title</th>
                     <th>City</th>
                     <th>Category</th>

@@ -5,7 +5,7 @@
 @section('content')
 <div id="pageBackground">
     <div id="breadcrumbs">
-    <a href="https://www.backlist24.org/"> Home</a> &gt; Login / Sign up
+    <a href="{{route('index')}}"> Home</a> &gt; Login / Sign up
     </div>
     <div id="centralIndexModule">
        
@@ -15,7 +15,7 @@
     <div class="signupbtn"> <a href="{{route('user.registration')}}" style="
         text-decoration: none;
     ">Sign Up</a></div>
-    <img alt="backlist24" title="backlist24" src="https://www.backlist24.org/assets/frontend/img/logo.png" />
+    <img alt="Bedpage24" title="Bedpage24" src="{{asset('frontend/image/logo.png')}}" />
     <form method="post" action="{{route('login.store')}}" id="login" style="
         margin-left: 15%;
         margin-right: 15%;
