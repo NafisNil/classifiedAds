@@ -64,7 +64,26 @@
                         @csrf
                         <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </form>
-                  
+                    @if ($item->free == 0)
+                    <a href="{{route('free.ad.permission', $item->id)}}" class="btn btn-outline-success btn-sm"> Free AD (on) </a>
+                    @else
+                    <a href="{{route('free.ad.neg', $item->id)}}" class="btn btn-outline-danger btn-sm"> Free AD (off) </a>
+                    @endif
+
+                    @if ($item->paid == 0)
+                    <a href="{{route('paid.ad.permission', $item->id)}}" class="btn btn-outline-success btn-sm"> Paid AD (on) </a>
+                    @else
+                    <a href="{{route('paid.ad.neg', $item->id)}}" class="btn btn-outline-danger btn-sm"> Paid AD (off) </a>
+                    @endif
+                    
+                    @if ($item->multi == 0)
+                    <a href="{{route('multiple.ad.permission', $item->id)}}" class="btn btn-outline-success btn-sm"> Multiple city AD (on) </a>
+                    @else
+                    <a href="{{route('multiple.ad.neg', $item->id)}}" class="btn btn-outline-danger btn-sm"> Multiple city AD (off) </a>
+                    @endif
+                    
+                    
+                   
                     </td>
                    
                   </tr>

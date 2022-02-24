@@ -524,12 +524,32 @@
             <br>
           @endforeach
           --}}
+
+          @php
+            $cityprice = 0;
+          @endphp
+          @if($ad_Category == 3)
+          @foreach ($nearby as $item)
+            <input type="checkbox" name="cityprice[]" onclick="nearbycities(446)" id="NearByCities446" value="{{$item->id}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" @if ($item->id == $cityDetails->id)
+              checked
+            @endif  >
+            <label for="NearByCities">{{$item->name}} - {{$ad_price}}</label>
+            <br>
+          @endforeach
+          @else
+          <input type="checkbox" name="city"  id="NearByCities446" value="{{$city}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25"
+              checked
+           @php
+             $cityname = App\Models\City::where('id', $city)->first();
+           @endphp
+
           <input type="checkbox" name="city"  id="NearByCities446" value="{{$edit->city}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25"
               checked
            @php
              $cityname = App\Models\City::where('id', $edit->city)->first();
            @endphp
             <label for="NearByCities">{{$cityname->name}} - {{$edit->cost}}</label>
+            @endif
           <br>
           <br>
           <input type="checkbox" name="accept_terms" id="acceptTermsBox" style="float:left;" value="true" checked>

@@ -74,6 +74,14 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('/user-admin-edit/{id}', [UserController::class, 'edit'])->name('user.admin.edit.form');
     Route::post('/user-admin-update/{id}', [UserController::class, 'update'])->name('user.admin.update');
     Route::delete('/selected-students', [AdvertiseController::class, 'deletedCheckedStudents'])->name('student.deleteSelected');
+
+    Route::get('/free-ad-permission/{id}', [UserController::class, 'free'])->name('free.ad.permission');
+    Route::get('/paid-ad-permission/{id}', [UserController::class, 'paid'])->name('paid.ad.permission');
+    Route::get('/multiple-ad-permission/{id}', [UserController::class, 'multiple'])->name('multiple.ad.permission');
+
+    Route::get('/free-ad-neg/{id}', [UserController::class, 'free_neg'])->name('free.ad.neg');
+    Route::get('/paid-ad-neg/{id}', [UserController::class, 'paid_neg'])->name('paid.ad.neg');
+    Route::get('/multiple-ad-neg/{id}', [UserController::class, 'multiple_neg'])->name('multiple.ad.neg');
 });
 
 

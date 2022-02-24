@@ -99,15 +99,24 @@
       <br />
       <ul>
         <li>
+          @if (Auth::user()->free == 1)
           <a href="{{route('choose.location', 1)}}">Post free ad </a>( Mainly free )
+          @endif
+        
         </li>
         <li>
+          @if (Auth::user()->paid == 1)
           <a href="{{route('choose.location', 2
-        )}}">Post local ad</a> ( Paid Premium And Sponsor ads )
+          )}}">Post local ad</a> ( Paid Premium And Sponsor ads )
+          @endif
+         
         </li>
         <li>
-          <a href="{{route('choose.location', 2
+          @if (Auth::user()->multi == 1)
+          <a href="{{route('choose.location', 3
           )}}">Post in multiple cities</a> ( Paid Premium And Sponsor ads )
+          @endif
+         
         </li>
         <br />
         <br />

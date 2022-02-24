@@ -90,7 +90,62 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back()->with('success', 'Data deleted successfully!');
     }
+    //approve
+
+    public function free($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->free = 1;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
+
+    public function paid($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->paid = 1;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
+
+    public function multiple($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->multi = 1;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
 
 
+    //deny
 
+    public function free_neg($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->free = 0;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
+
+    public function paid_neg($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->paid = 0;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
+
+    public function multiple_neg($id)
+    {
+        # code...
+        $user = User::find($id);
+        $user->multi = 0;
+        $user->save();
+         return redirect()->back()->with('success',  'data updated successfully!');
+    }
 }

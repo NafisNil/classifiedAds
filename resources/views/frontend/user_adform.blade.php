@@ -388,6 +388,7 @@
           <div class="header"> Title </div>
           <div class="content">
             <input type="text" name="title" id="name" maxlength="60" minlength="2" class="required largeInput" value="" required>
+            <input type="hidden" name="ad_category" value="{{$ad_Category}}">
           </div>
           <span id="checkerror" style="display:none;color:red"></span>
         </div>
@@ -452,7 +453,7 @@
         </div>
         <br clear="both">
         {{-- paid single ad --}}
-        @if($ad_Category == 2)
+        @if($ad_Category == 2 || $ad_Category == 3)
         <h3 class="recUpgrades">Verified ads future <span class="editAdText"></span>
         </h3>
       <span class="editAdTitles">
@@ -519,7 +520,7 @@
         <br>
         <span class="editAdTitles">
           <b>Add Nearby Cities</b>
-          <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25">{{$ad_price}}</span>
+          <span id="nearbyTotalPriceArea"> for <span id="nearbyTotalPrice" data-near="0.25"></span>
           </span>
           <br>
         {{--  @foreach ($nearby as $item)
@@ -530,12 +531,25 @@
             <br>
           @endforeach
           --}}
+          @php
+            $cityprice = 0;
+          @endphp
+          @if($ad_Category == 3)
+          @foreach ($nearby as $item)
+            <input type="checkbox" name="cityprice[]" onclick="nearbycities(446)" id="NearByCities446" value="{{$item->id}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25" @if ($item->id == $cityDetails->id)
+              checked
+            @endif  >
+            <label for="NearByCities">{{$item->name}} - {{$ad_price}}</label>
+            <br>
+          @endforeach
+          @else
           <input type="checkbox" name="city"  id="NearByCities446" value="{{$city}}" data-baseprice="0.25" data-autorepostprice="5" data-sponsorprice="2" data-movetotopprice="0.25"
               checked
            @php
              $cityname = App\Models\City::where('id', $city)->first();
            @endphp
             <label for="NearByCities">{{$cityname->name}} - {{$ad_price}}</label>
+          @endif
           <br>
           <br>
           <input type="checkbox" name="accept_terms" id="acceptTermsBox" style="float:left;" value="true">

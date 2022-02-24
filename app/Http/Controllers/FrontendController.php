@@ -111,6 +111,7 @@ class FrontendController extends Controller
         # code...
         
      // dd($request->premium);
+    
      if($request->premium == null){
         $premium = 0;
         $request->premium = 0;
@@ -126,28 +127,63 @@ class FrontendController extends Controller
             $weekly = 1;
         }
             
-            //dd($request->premium);
-        $ad = Advertise::create([
-            'title' => $request->title,
-            'desc' => $request->desc,
-            'category' => $request->category,
-            'premium' => $premium,
-            'weekly' => $weekly,
-            'location' => $request->location,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'subcategory' => $request->subcategory,
-            'user' => $request->user,
-            'city' => $request->city,
-            
-            'age' => $request->age,
-            'cost' => $request->mtprice + $request->tcityprice+$request->premium+$request->sponsor,
-            'status' => '0',
-            'logo' => $request->logo
-        ]);
-        if ($request->hasFile('logo')) {
-            $this->_uploadImage($request, $ad);
-        }
+          //  dd());
+          if($request->ad_category == 3)
+          {
+            $multiple = count($request->cityprice  ) - 1;
+            $cityprice = $request->cityprice;
+                foreach($cityprice as $key => $no)
+                {
+                   
+                   $ad =  Advertise::create([
+                        'title' => $request->title,
+                        'desc' => $request->desc,
+                        'category' => $request->category,
+                        'premium' => $premium,
+                        'weekly' => $weekly,
+                        'location' => $request->location,
+                        'phone' => $request->phone,
+                        'email' => $request->email,
+                        'subcategory' => $request->subcategory,
+                        'user' => $request->user,
+                        'city' => $no,
+                        
+                        'age' => $request->age,
+                        'cost' => $request->mtprice + $request->tcityprice+$request->premium+$request->sponsor+$multiple*.01,
+                        'status' => '0',
+                        'logo' => $request->logo
+                    ]);
+                    if ($request->hasFile('logo')) {
+                        $this->_uploadImage($request, $ad);
+                    }
+
+                }
+              //echo "multiple";
+          }else{
+              $multiple = 0;
+            $ad = Advertise::create([
+                'title' => $request->title,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'premium' => $premium,
+                'weekly' => $weekly,
+                'location' => $request->location,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'subcategory' => $request->subcategory,
+                'user' => $request->user,
+                'city' => $request->city,
+                
+                'age' => $request->age,
+                'cost' => $request->mtprice + $request->tcityprice+$request->premium+$request->sponsor+$multiple*.01,
+                'status' => '0',
+                'logo' => $request->logo
+            ]);
+            if ($request->hasFile('logo')) {
+                $this->_uploadImage($request, $ad);
+            }
+          }
+   
        
         session()->put('post_id', $ad->id);
         session()->put('title', $request->title);
@@ -202,9 +238,11 @@ class FrontendController extends Controller
     public function editAdform(Advertise $advertise)
     {
         # code...
-        
+       // $city = City::where('id', $advertise->city)->first();
+       
         return view('frontend.user_editform',[
-            'edit' => $advertise
+            'edit' => $advertise,
+            
         ]);
         //dd($advertise);
     }
