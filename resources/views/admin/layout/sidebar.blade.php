@@ -149,6 +149,15 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('payment.index')}}" class="nav-link {{$route == 'payment.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Payment Description
+              </p>
+            </a>
+          </li>
 <hr>
 <li class="nav-item">
   <a href="{{route('advertise.index')}}" class="nav-link {{$route == 'advertise.index'?'active':''}}">

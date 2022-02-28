@@ -108,6 +108,19 @@
     <script src="{{asset('frontend')}}/js/nav.js" type="text/javascript"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/rocket-loader@2.4.0/build/js/loader.js" data-cf-settings="5cf69b7f358dec5e96f44dff-|49" defer=""></script>
+    <!--Start of Tawk.to Script-->
+<!--<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6217462d1ffac05b1d7b7d35/1fslek9g0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script> -->
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>

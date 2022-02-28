@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '2518114116-2eipubs6jnfjq4i6jqgr7b5k8nu67cdp.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
+        'redirect' => 'http://bedpage24.com/auth/google/callback',
     ],
 
 ];

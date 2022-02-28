@@ -18,6 +18,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\AdvertiseController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PaymentController;
 use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
     Route::resource('about', AboutusController::class);
+    Route::resource('payment', PaymentController::class);
     Route::resource('service', ServiceController::class);
     Route::resource('term', TermController::class);
     Route::resource('contact', ContactController::class);

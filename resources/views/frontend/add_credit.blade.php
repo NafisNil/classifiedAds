@@ -38,7 +38,7 @@
     </div>
     <div id="mySidenavmySidenav" class="sidenav">
       <div class="menupb">
-        <a href="{{route}}" class="menubutton">Post ad</a>
+        <a href="{{route('post.ad')}}" class="menubutton">Post ad</a>
       </div>
       <ul class="myulSidenav">
         <li>
@@ -267,8 +267,15 @@
             <br>
             </a>
           </div>
-          <div class="row"></div>
+          <br>
+         
         </div>
+        <div class="row justify-content float-right" >
+            @if ($payment->desc != null)
+            {!!$payment->desc!!}
+            @endif
+                
+            </div>
       </div>
       <footer class="main-footer">
         <div class="pull-right hidden-xs"> Anything you want </div>

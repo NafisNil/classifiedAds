@@ -14,6 +14,7 @@ use App\Models\Privacy;
 use App\Models\Aboutus;
 use App\Models\Contact;
 use App\Models\Advertise;
+use App\Models\Payment;
 use App\Models\User;
 use App\Http\Requests\AdvertiseRequest;
 use Session;
@@ -325,7 +326,8 @@ class FrontendController extends Controller
     public function addCredit()
     {
         # code...
-        return view('frontend.add_credit');
+        $payment = Payment::first();
+        return view('frontend.add_credit',['payment' => $payment]);
     }
 
     public function passwordReset()
